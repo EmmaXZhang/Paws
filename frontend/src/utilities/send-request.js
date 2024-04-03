@@ -1,12 +1,6 @@
 import { getToken } from "./users-service";
 
-// URL: the HTTP request send to
-// method: HTTP request method
-// payload: data payload send with request
 export default async function sendRequest(url, method = "GET", payload = null) {
-  //1.Setting up headers and body based on payload
-
-  // options - object , method - property(coming from sendRequest(method params))
   const options = { method };
   // if payload provided, [header][body] used to configure the HTTP request
   if (payload) {
