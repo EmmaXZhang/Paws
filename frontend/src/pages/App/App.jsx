@@ -2,12 +2,11 @@ import "./App.css";
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import { getUser } from "../../utilities/users-service";
-import NewOrderPage from "../NewOrderPage/NewOrderPage";
 import AuthPage from "../AuthPage/AuthPage";
-import OrderHistoryPage from "../OrderPageHistory/OrderPageHistory";
 import NavBar from "../../components/NavBar/NavBar";
 import { Container } from "react-bootstrap";
 import Footer from "../../components/Footer/Footer";
+import HomePage from "../HomePage/HomePage";
 
 function App() {
   const [user, setUser] = useState(getUser());
@@ -20,8 +19,7 @@ function App() {
           <main className="py-3">
             <Container>
               <Routes>
-                <Route path="/orders/new" element={<NewOrderPage />} />
-                <Route path="/orders" element={<OrderHistoryPage />} />
+                <Route path="/" element={<HomePage />} />
               </Routes>
             </Container>
           </main>
