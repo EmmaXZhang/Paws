@@ -1,8 +1,9 @@
-import { Row, Col, Button, Container } from "react-bootstrap";
+import { Row, Col, Button } from "react-bootstrap";
 import Product from "../../components/Product/Product";
 import { useEffect, useState } from "react";
 import * as productsAPI from "../../utilities/products-api";
 import "./HomePage.css";
+import HomePageCategory from "../../components/HomePageCategory/HomePageCategory";
 
 export default function HomePage() {
   const [products, setProducts] = useState([]);
@@ -29,6 +30,10 @@ export default function HomePage() {
           <h1 className="background-words">LUXURY FASHION FOR PETS</h1>
           <Button variant="outline-light">SHOP NOW</Button>
         </div>
+      </Row>
+
+      <Row xs={1} md={3}>
+        <HomePageCategory />
       </Row>
 
       <Row>

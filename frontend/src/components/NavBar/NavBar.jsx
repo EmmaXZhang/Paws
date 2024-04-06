@@ -4,7 +4,7 @@ import { LinkContainer } from "react-router-bootstrap";
 import * as userService from "../../utilities/users-service";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import { FaShoppingCart, FaUser } from "react-icons/fa";
-import logo from "../../../assets/Homie.png";
+
 import "./NavBar.css";
 
 export default function NavBar({ user, setUser }) {
@@ -27,7 +27,11 @@ export default function NavBar({ user, setUser }) {
           {/* logo */}
           <LinkContainer to="/">
             <Navbar.Brand>
-              <img src={logo} alt="logo" style={{ height: "150px" }} />
+              <img
+                src="./images/PAWS.png"
+                alt="logo"
+                style={{ height: "150px", width: "180px" }}
+              />
             </Navbar.Brand>
           </LinkContainer>
 
