@@ -1,8 +1,22 @@
 import { Row, Col } from "react-bootstrap";
 import Product from "../../components/Product/Product";
-import products from "../products";
+import { useEffect, useState } from "react";
+import * as productsAPI from "../../utilities/products-api";
 
 export default function HomePage() {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const products = await productsAPI.getProducts();
+        setProducts(products);
+      } catch (err) {
+        console.log("loadding journal errors", err);
+      }
+    })();
+  }, []);
+
   return (
     <>
       <h1>Latest Products</h1>

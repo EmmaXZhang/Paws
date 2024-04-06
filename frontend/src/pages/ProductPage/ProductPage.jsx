@@ -1,5 +1,4 @@
-import { useParams } from "react-router-dom";
-import products from "../products";
+import { useParams, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Rating from "../../components/Rating/Rating";
 import {
@@ -11,12 +10,25 @@ import {
   Button,
   ListGroupItem,
 } from "react-bootstrap";
+import * as productsAPI from "../../utilities/products-api";
 
 export default function ProductPage() {
+  const [product, setProduct] = useState({});
   // match route endpoint
   const { id } = useParams();
-  const product = products.find((p) => p._id === id);
-  console.log(product);
+
+  useEffect(() => {
+    async function getProduct() {
+      try {
+        //send to Backend
+        const oneProduct = await productsAPI.getOneProduct(id);
+        setProduct(oneProduct);
+      } catch (err) {
+        console.log("get product error", err);
+      }
+    }
+    getProduct();
+  }, [id]);
 
   return (
     <>

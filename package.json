@@ -1,5 +1,5 @@
 {
-  "name": "homie",
+  "name": "paws",
   "version": "1.0.0",
   "description": "Clone this repo to provide the starter code for a comprehensive MERN-Stack project including token-based authentication.",
   "main": "index.js",
