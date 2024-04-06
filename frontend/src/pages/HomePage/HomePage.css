@@ -1,0 +1,69 @@
+.background-video {
+  width: 100%;
+  height: 120px; /* Adjust height as needed */
+  overflow: hidden;
+}
+
+.background-video-container {
+  position: relative;
+}
+
+.background-video video {
+  position: absolute;
+  padding: 0;
+  top: 0;
+  left: 0;
+  min-width: 800px;
+  width: 100%;
+  height: auto;
+  z-index: -1;
+}
+
+@media screen and (min-width: 576px) and (max-width: 767px) {
+  .background-video {
+    width: 100%;
+    height: 140px;
+    overflow: hidden;
+  }
+
+  .background-words {
+    font-size: 2em;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .background-video {
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+  }
+
+  .background-words {
+    font-size: 2em;
+    color: white;
+  }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+  .background-video {
+    width: 100%;
+    height: 320px;
+    overflow: hidden;
+  }
+}
+
+@media screen and (min-width: 1200px) and (max-width: 1400px) {
+  .background-video {
+    width: 100%;
+    height: 440px;
+    overflow: hidden;
+  }
+}
+
+@media screen and (min-width: 1401px) {
+  .background-video {
+    width: 100%;
+    height: 680px;
+    overflow: hidden;
+  }
+}

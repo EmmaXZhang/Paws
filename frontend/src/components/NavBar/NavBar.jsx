@@ -2,7 +2,7 @@
 import { Link } from "react-router-dom";
 import { LinkContainer } from "react-router-bootstrap";
 import * as userService from "../../utilities/users-service";
-import { Navbar, Nav, Container, Row, Col } from "react-bootstrap";
+import { Navbar, Nav, Container } from "react-bootstrap";
 import { FaShoppingCart, FaUser } from "react-icons/fa";
 import logo from "../../../assets/Homie.png";
 import "./NavBar.css";
@@ -17,7 +17,12 @@ export default function NavBar({ user, setUser }) {
 
   return (
     <header>
-      <Navbar bg="dark" variant="dark" expand="md" collapseOnSelect>
+      <Navbar
+        variant="dark"
+        expand="md"
+        className="customNavbar"
+        collapseOnSelect
+      >
         <Container className="justify-content-between">
           {/* logo */}
           <LinkContainer to="/">
