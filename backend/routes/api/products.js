@@ -5,7 +5,7 @@ const productsCtrl = require("../../controllers/api/products");
 // const ensureLoggedIn = require("../../config/ensureLoggedIn");
 
 // POST /api/productss/new
-router.post("/new", upload.single("image"), productsCtrl.create);
+// router.post("/new", upload.single("image"), productsCtrl.create);
 
 // GET /api/products
 router.get("/", productsCtrl.index);

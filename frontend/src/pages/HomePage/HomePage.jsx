@@ -19,6 +19,7 @@ export default function HomePage() {
 
   return (
     <>
+      <div></div>
       <h1>Latest Products</h1>
       <Row>
         {products.map((product) => (

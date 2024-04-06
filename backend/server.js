@@ -17,7 +17,7 @@ app.use(require("./config/checkToken"));
 
 app.use("/api/users", require("./routes/api/users"));
 
-app.use("api/products", require("./routes/api/products"));
+app.use("/api/products", require("./routes/api/products"));
 
 //any URL/paths which is not exist, by sending the React index.html page (homepage)
 app.get("/*", function (req, res) {
