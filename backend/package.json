@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "npx nodemon server.js",
     "build": "",
-    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0"
+    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "data:import": "node backend/seeder.js",
+    "data:destroy": "node backend/seeder.js -d"
   },
   "dependencies": {
     "bcrypt": "^5.1.1",

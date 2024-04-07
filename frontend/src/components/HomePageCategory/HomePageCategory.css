@@ -4,3 +4,7 @@
   object-fit: cover;
   padding: 0;
 }
+
+.cardBody {
+  background-color: #fff7f1;
+}
