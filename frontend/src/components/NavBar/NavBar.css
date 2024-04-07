@@ -1,3 +1,41 @@
 .customNavbar {
   flex-wrap: wrap;
 }
+header {
+  position: relative;
+}
+.navbar {
+  background-color: #f8f9fa;
+  padding: 1rem;
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.nav-link {
+  color: #333;
+  margin-left: 1rem;
+}
+
+nav {
+  width: 100%;
+  padding: 1em 0;
+  position: fixed;
+  top: 0;
+  z-index: 2; /* Ensures visibility over other content */
+  background-color: rgba(0, 0, 0, 0.5); /* Default style for non-home pages */
+}
+
+nav.home-nav {
+  background-color: transparent;
+  position: absolute;
+}
+
+nav.home-nav {
+  background-color: transparent;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}

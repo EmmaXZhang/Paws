@@ -5,6 +5,8 @@ import * as productsAPI from "../../utilities/products-api";
 import "./HomePage.css";
 import HomePageCategory from "../../components/HomePageCategory/HomePageCategory";
 
+import HeroBanner from "./HeroBanner";
+
 export default function HomePage() {
   const [products, setProducts] = useState([]);
 
@@ -21,29 +23,24 @@ export default function HomePage() {
 
   return (
     <>
-      {/* hero section */}
-      <Row className="background-video">
-        <video autoPlay loop muted>
-          <source src="/homepage-video.mp4" type="video/mp4" />
-        </video>
-        <div>
-          <h1 className="background-words">LUXURY FASHION FOR PETS</h1>
-          <Button variant="outline-light">SHOP NOW</Button>
-        </div>
-      </Row>
+      <HeroBanner />
 
-      <Row xs={1} md={3}>
-        <HomePageCategory />
-      </Row>
+      <section>
+        <Row xs={1} md={3}>
+          <HomePageCategory />
+        </Row>
+      </section>
 
-      <Row>
-        <h1>Latest Products</h1>
-        {products.map((product) => (
-          <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
-            <Product product={product} />
-          </Col>
-        ))}
-      </Row>
+      <section>
+        <Row>
+          <h1>Latest Products</h1>
+          {products.map((product) => (
+            <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
+              <Product product={product} />
+            </Col>
+          ))}
+        </Row>
+      </section>
     </>
   );
 }
