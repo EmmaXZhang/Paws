@@ -1,4 +1,4 @@
-import { Row, Col, Button } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 import Product from "../../components/Product/Product";
 import { useEffect, useState } from "react";
 import * as productsAPI from "../../utilities/products-api";

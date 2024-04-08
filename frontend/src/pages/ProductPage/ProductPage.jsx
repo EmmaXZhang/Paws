@@ -1,4 +1,5 @@
-import { useParams, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Rating from "../../components/Rating/Rating";
 import {
