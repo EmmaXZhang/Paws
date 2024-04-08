@@ -5,6 +5,8 @@ import "./HomePage.css";
 import HomePageCategory from "../../components/HomePageCategory/HomePageCategory";
 import HeroBanner from "./HeroBanner";
 import { useGetProductsQuery } from "../../slices/productsApiSlice";
+import Loader from "../../components/Loader/Loader";
+import Message from "../../components/Message";
 
 export default function HomePage() {
   const { data: products, isLoading, error } = useGetProductsQuery();
@@ -21,9 +23,9 @@ export default function HomePage() {
 
       <section>
         {isLoading ? (
-          <p>Loading...</p>
+          <Loader />
         ) : error ? (
-          <p>Error: {error.message}</p>
+          <Message variant="danger">Error: {error.message}</Message>
         ) : (
           <>
             <h1>Latest Products</h1>

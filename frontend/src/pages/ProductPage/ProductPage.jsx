@@ -2,6 +2,8 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Rating from "../../components/Rating/Rating";
 import { useGetProductDetailsQuery } from "../../slices/productsApiSlice";
+import Loader from "../../components/Loader/Loader";
+import Message from "../../components/Message";
 import {
   Row,
   Col,
@@ -25,9 +27,9 @@ export default function ProductPage() {
       </Link>
 
       {isLoading ? (
-        <p>Loading...</p>
+        <Loader />
       ) : error ? (
-        <p>Error: {error.message}</p>
+        <Message variant="danger">Error: {error.message}</Message>
       ) : (
         <Row>
           <Col md={5}>
