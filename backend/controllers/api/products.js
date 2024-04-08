@@ -1,5 +1,6 @@
 const Product = require("../../models/product");
 
+// fetch all product
 async function index(req, res) {
   try {
     const products = await Product.find({});
@@ -10,10 +11,10 @@ async function index(req, res) {
   }
 }
 
+//fetch one product
 async function show(req, res) {
   try {
     const product = await Product.findById(req.params.id);
-
     if (product) {
       res.json(product);
     } else {
