@@ -8,6 +8,7 @@ const store = configureStore({
   //use a reducer provided by apiSlice and associating it with a specific slice of state identified by apiSlice.reducerPath.
   reducer: {
     [apiSlice.reducerPath]: apiSlice.reducer,
+    // add more new reducers from slice
     //access to addToCart,
     cart: cartSliceReducer,
   },

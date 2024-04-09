@@ -4,10 +4,14 @@ import * as userService from "../../utilities/users-service";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import { FaShoppingCart, FaUser } from "react-icons/fa";
 import { Link, useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
+import logo from "/images/PAWS.png";
 
 import "./NavBar.css";
 
 export default function NavBar({ user, setUser }) {
+  // store.js -> reducer -> cart -> cartSlice
+  const { cartItems } = useSelector((state) => state.cart);
   const location = useLocation();
   const isHomePage = location.pathname === "/";
   const classNames = isHomePage
@@ -28,9 +32,9 @@ export default function NavBar({ user, setUser }) {
           <LinkContainer to="/">
             <Navbar.Brand>
               <img
-                src="./images/PAWS.png"
+                src={logo}
                 alt="logo"
-                style={{ height: "150px", width: "180px" }}
+                style={{ height: "120px", width: "180px" }}
               />
             </Navbar.Brand>
           </LinkContainer>

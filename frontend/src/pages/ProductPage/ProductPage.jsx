@@ -1,10 +1,12 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Rating from "../../components/Rating/Rating";
 import { useGetProductDetailsQuery } from "../../slices/productsApiSlice";
 import Loader from "../../components/Loader/Loader";
 import Message from "../../components/Message";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../slices/cartSlice";
 import {
   Form,
   Row,
@@ -21,7 +23,17 @@ export default function ProductPage() {
   const { id } = useParams();
   const [quantity, setQuantity] = useState(1);
 
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const { data: product, isLoading, error } = useGetProductDetailsQuery(id);
+
+  function addToCartHandler() {
+    // product -> data:product
+    // merge proudct and quantity into one object, which is the payload in the action
+    dispatch(addToCart({ ...product, quantity }));
+    navigate("/cart");
+  }
 
   return (
     <>
@@ -109,6 +121,7 @@ export default function ProductPage() {
                     className="btn-block"
                     type="button"
                     disabled={product.countInStock === 0}
+                    onClick={addToCartHandler}
                   >
                     Add To Cart
                   </Button>
