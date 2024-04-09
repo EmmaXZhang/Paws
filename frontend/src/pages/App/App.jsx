@@ -8,6 +8,7 @@ import { Container } from "react-bootstrap";
 import Footer from "../../components/Footer/Footer";
 import HomePage from "../HomePage/HomePage";
 import ProductPage from "../ProductPage/ProductPage";
+import CartPage from "../CartPage/CartPage.jsx";
 
 function App() {
   const [user, setUser] = useState(getUser());
@@ -23,6 +24,7 @@ function App() {
                 {/* go to url */}
                 <Route path="/" element={<HomePage />} />
                 <Route path="/products/:id" element={<ProductPage />} />
+                <Route path="/cart" element={<CartPage />} />
               </Routes>
             </Container>
           </main>
