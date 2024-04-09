@@ -9,7 +9,7 @@ const HeroBanner = () => {
         Your browser does not support the video tag.
       </video>
       <div className="hero-content">
-        <h1 className="background-words">LUXURY FASHION FOR PETS</h1>
+        <h1>LUXURY FASHION FOR PETS</h1>
         <Link to="/learn-more" className="btn btn-outline-light banner-button">
           SHOP NOW
         </Link>

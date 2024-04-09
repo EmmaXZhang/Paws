@@ -24,18 +24,15 @@
 }
 
 .hero-content h1 {
-  font-size: 3rem;
+  font-size: 2rem;
   margin-bottom: 1rem;
+  font-family: "Playfair Display", serif;
+  color: white;
 }
 
 .hero-content p {
   font-size: 1.5rem;
   margin-bottom: 2rem;
-}
-
-.background-words {
-  font-family: "Playfair Display", serif;
-  color: white;
 }
 
 .banner-button {
