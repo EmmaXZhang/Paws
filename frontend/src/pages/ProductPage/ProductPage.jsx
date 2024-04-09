@@ -4,7 +4,9 @@ import Rating from "../../components/Rating/Rating";
 import { useGetProductDetailsQuery } from "../../slices/productsApiSlice";
 import Loader from "../../components/Loader/Loader";
 import Message from "../../components/Message";
+import { useState } from "react";
 import {
+  Form,
   Row,
   Col,
   Image,
@@ -17,6 +19,7 @@ import {
 export default function ProductPage() {
   // match route endpoint
   const { id } = useParams();
+  const [quantity, setQuantity] = useState(1);
 
   const { data: product, isLoading, error } = useGetProductDetailsQuery(id);
 
@@ -76,6 +79,30 @@ export default function ProductPage() {
                     </Col>
                   </Row>
                 </ListGroup.Item>
+
+                {product.countInStock > 0 && (
+                  <ListGroup.Item>
+                    <Row>
+                      <Col>Qty</Col>
+                      <Col>
+                        <Form.Control
+                          as="select"
+                          value={quantity}
+                          onChange={(e) => setQuantity(Number(e.target.value))}
+                        >
+                          {/* gives array of inStock-1, starting from 0 */}
+                          {[...Array(product.countInStock).keys()].map(
+                            (num) => (
+                              <option key={num + 1} value={num + 1}>
+                                {num + 1}
+                              </option>
+                            )
+                          )}
+                        </Form.Control>
+                      </Col>
+                    </Row>
+                  </ListGroup.Item>
+                )}
 
                 <ListGroupItem>
                   <Button
