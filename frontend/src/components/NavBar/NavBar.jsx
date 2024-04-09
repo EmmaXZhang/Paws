@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
 import { LinkContainer } from "react-router-bootstrap";
 import * as userService from "../../utilities/users-service";
-import { Navbar, Nav, Container } from "react-bootstrap";
+import { Badge, Navbar, Nav, Container } from "react-bootstrap";
 import { FaShoppingCart, FaUser } from "react-icons/fa";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 import logo from "/images/PAWS.png";
 
@@ -55,6 +55,14 @@ export default function NavBar({ user, setUser }) {
               <LinkContainer to="/cart">
                 <Nav.Link>
                   <FaShoppingCart /> Cart
+                  {cartItems.length > 0 && (
+                    <Badge pill bg="success" style={{ marginLeft: "5px" }}>
+                      {cartItems.reduce(
+                        (acc, currentItem) => acc + currentItem.quantity,
+                        0
+                      )}
+                    </Badge>
+                  )}
                 </Nav.Link>
               </LinkContainer>
 
