@@ -12,7 +12,7 @@ import {
 import { FaTrash } from "react-icons/fa";
 import Message from "../../components/Message";
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart } from "../../slices/cartSlice";
+import { addToCart, removeFromCart } from "../../slices/cartSlice";
 import React from "react";
 
 const CartPage = () => {
@@ -25,6 +25,10 @@ const CartPage = () => {
 
   function addToCartHandler(product, quantity) {
     dispatch(addToCart({ ...product, quantity }));
+  }
+
+  function removeFromCartHandler(id) {
+    dispatch(removeFromCart(id));
   }
 
   return (

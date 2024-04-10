@@ -14,7 +14,7 @@ const cartSlice = createSlice({
   reducers: {
     // state-> current cart state, action -> includes the data(product+quantity) to be added to the cart in its payload property
     addToCart: (state, action) => {
-      // item to be added to the cart
+      // payload = product data + quantity
       const itemToAdd = action.payload;
       const existItem = state.cartItems.find((i) => i._id === itemToAdd._id);
 
@@ -33,6 +33,7 @@ const cartSlice = createSlice({
 
     removeFromCart: (state, action) => {
       state.cartItems = state.cartItems.filter(
+        //payload = product._id
         (item) => item._id !== action.payload
       );
       return updateCart(state);
@@ -41,6 +42,6 @@ const cartSlice = createSlice({
 });
 
 //cartSlice.actions -> enable other component can use this function.
-export const { addToCart } = cartSlice.actions;
+export const { addToCart, removeFromCart } = cartSlice.actions;
 
 export default cartSlice.reducer;
