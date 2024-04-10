@@ -24,7 +24,7 @@ const CartPage = () => {
   const { cartItems } = cart;
 
   function addToCartHandler(product, quantity) {
-    dispatch(addToCart(...product, quantity));
+    dispatch(addToCart({ ...product, quantity }));
   }
 
   return (
@@ -57,7 +57,6 @@ const CartPage = () => {
                         addToCartHandler(item, Number(e.target.value))
                       }
                     >
-                      {/* gives array of inStock-1, starting from 0 */}
                       {[...Array(item.countInStock).keys()].map((num) => (
                         <option key={num + 1} value={num + 1}>
                           {num + 1}
