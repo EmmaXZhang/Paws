@@ -28,7 +28,14 @@ const cartSlice = createSlice({
         state.cartItems = [...state.cartItems, itemToAdd];
       }
       // return Cart's updated state -> differen prices
-      return updateCart(state, itemToAdd);
+      return updateCart(state);
+    },
+
+    removeFromCart: (state, action) => {
+      state.cartItems = state.cartItems.filter(
+        (item) => item._id !== action.payload
+      );
+      return updateCart(state);
     },
   },
 });
