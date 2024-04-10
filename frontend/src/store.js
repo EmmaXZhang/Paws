@@ -9,7 +9,7 @@ const store = configureStore({
   reducer: {
     [apiSlice.reducerPath]: apiSlice.reducer,
     // add more new reducers from slice
-    //access to addToCart,
+    //access actions in cartSlice
     cart: cartSliceReducer,
   },
   middleware: (getDefaultMiddleware) =>

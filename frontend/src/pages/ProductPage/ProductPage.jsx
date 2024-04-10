@@ -15,7 +15,6 @@ import {
   ListGroup,
   Card,
   Button,
-  ListGroupItem,
 } from "react-bootstrap";
 
 export default function ProductPage() {

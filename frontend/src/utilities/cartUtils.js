@@ -1,30 +1,29 @@
-export function addDecimals(value) {
-  return (Math.round(value * 100) / 100).toFixed(2);
-}
+export const addDecimals = (num) => {
+  return (Math.round(num * 100) / 100).toFixed(2);
+};
 
 export function updateCart(state) {
   //calculate items price
   // state.cartItems -> defined in initialState
   // item.price -> THE product's price
-  const itemPrice = addDecimals(
-    state.cartItems.reduce(
-      //item.quantity coming from product detail page's quantity
-      (acc, item) => acc + item.price * item.quantity,
-      0
-    )
+  //item.quantity coming from product detail page's quantity
+  const itemsPrice = state.cartItems.reduce(
+    (acc, item) => acc + (item.price * 100 * item.qty) / 100,
+    0
   );
-  state.itemsPrice = itemPrice;
+  state.itemsPrice = addDecimals(itemsPrice);
 
   //calculate shipping price
-  state.shippingPrice = addDecimals(state.itemsPrice > 200 ? 0 : 15);
+  const shippingPrice = itemsPrice > 199 ? 0 : 15;
+  state.shippingPrice = addDecimals(shippingPrice);
+
   //calculate tax (10%)
-  state.taxPrice = addDecimals(Number((state.itemsPrice * 0.1).toFixed(2)));
+  const taxPrice = 0.15 * itemsPrice;
+  state.taxPrice = addDecimals(taxPrice);
+
   //caculate total
-  state.totalPrice = (
-    Number(state.itemsPrice) +
-    Number(state.shippingPrice) +
-    Number(state.taxPrice)
-  ).toFixed(2);
+  const totalPrice = itemsPrice + shippingPrice + taxPrice;
+  state.totalPrice = addDecimals(totalPrice);
 
   //store the updated state of the cart in the browser's local storage.
   //when user revisit the page, the state is still there

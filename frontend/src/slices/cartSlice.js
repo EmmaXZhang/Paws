@@ -12,7 +12,7 @@ const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    // state-> current state, action -> includes the data to be added to the cart in its payload property
+    // state-> current cart state, action -> includes the data(product+quantity) to be added to the cart in its payload property
     addToCart: (state, action) => {
       // item to be added to the cart
       const itemToAdd = action.payload;
@@ -24,6 +24,7 @@ const cartSlice = createSlice({
           i._id === existItem._id ? itemToAdd : i
         );
       } else {
+        //ADD new product to cart state
         state.cartItems = [...state.cartItems, itemToAdd];
       }
       // return Cart's updated state -> differen prices
