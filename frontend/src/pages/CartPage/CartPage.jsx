@@ -31,6 +31,10 @@ const CartPage = () => {
     dispatch(removeFromCart(id));
   }
 
+  function checkOutHandler() {
+    navigate("/login?redirect=/shipping");
+  }
+
   return (
     <Row>
       <Col md={8}>
@@ -69,7 +73,11 @@ const CartPage = () => {
                     </Form.Control>
                   </Col>
                   <Col md={2}>
-                    <Button type="button" variant="light">
+                    <Button
+                      type="button"
+                      variant="light"
+                      onClick={() => removeFromCartHandler(item._id)}
+                    >
                       <FaTrash />
                     </Button>
                   </Col>
@@ -98,6 +106,7 @@ const CartPage = () => {
                 type="button"
                 className="btn-block"
                 disabled={cartItems.length === 0}
+                onClick={checkOutHandler}
               >
                 Check Out
               </Button>
