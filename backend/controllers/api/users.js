@@ -141,7 +141,6 @@ async function getUserById(req, res) {
 
 //Update user
 //PUT /api/users/:id
-
 async function updateUser(req, res) {
   const user = await User.findById(req.params.id);
 
