@@ -8,7 +8,7 @@ export function updateCart(state) {
   // item.price -> THE product's price
   //item.quantity coming from product detail page's quantity
   const itemsPrice = state.cartItems.reduce(
-    (acc, item) => acc + (item.price * 100 * item.qty) / 100,
+    (acc, item) => acc + (item.price * 100 * item.quantity) / 100,
     0
   );
   state.itemsPrice = addDecimals(itemsPrice);
