@@ -5,6 +5,7 @@ const express = require("express");
 const router = express.Router();
 const usersCtrl = require("../../controllers/api/users");
 const ensureLoggedIn = require("../../config/ensureLoggedIn");
+const ensureAdmin = require("../../config/ensureAdmin");
 
 // GET //api/users/check-token
 router.get("/check-token", ensureLoggedIn, usersCtrl.checkToken);
@@ -21,12 +22,12 @@ router.put("/profile", usersCtrl.updateUserProfile);
 
 // Admin users---------------------------
 //GET /api/users
-router.get("/users", usersCtrl.getUsers);
+router.get("/users", ensureAdmin, usersCtrl.getUsers);
 //DELETE /api/users/:id
-router.delete("/:id", usersCtrl.deleteUser);
+router.delete("/:id", ensureAdmin, usersCtrl.deleteUser);
 // GET /api/users/:id
-router.get("/:id", usersCtrl.getUserById);
+router.get("/:id", ensureAdmin, usersCtrl.getUserById);
 //PUT /api/users/:id
-router.put("/:id", usersCtrl.updateUser);
+router.put("/:id", ensureAdmin, usersCtrl.updateUser);
 
 module.exports = router;

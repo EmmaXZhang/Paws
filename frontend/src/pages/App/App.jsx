@@ -11,7 +11,7 @@ import ProductPage from "../ProductPage/ProductPage";
 import CartPage from "../CartPage/CartPage.jsx";
 import AllProductPage from "../AllProductPage/AllProductpage.jsx";
 import DogPage from "../DogPage/DogPage.jsx";
-import CatPage from "../CartPage/CartPage.jsx";
+import CatPage from "../CatPage/CatPage.jsx";
 
 function App() {
   const [user, setUser] = useState(getUser());
