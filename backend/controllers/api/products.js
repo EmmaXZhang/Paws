@@ -3,7 +3,10 @@ const Product = require("../../models/product");
 // fetch all product
 async function index(req, res) {
   try {
-    const products = await Product.find({});
+    //query string name->category
+    const { category } = req.query;
+    const filter = category ? { petCategory: category } : {};
+    const products = await Product.find(filter);
     console.log("products", products);
     res.json(products);
   } catch (error) {

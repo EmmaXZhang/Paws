@@ -13,6 +13,17 @@ export const productsApiSlice = apiSlice.injectEndpoints({
       keepUnusedDataFor: 5,
     }),
 
+    // GET products by category
+    getProductsByCategory: builder.query({
+      // Define query function with category parameter
+      query: (category) => ({
+        url: PRODUCTS_URL,
+        //giving query string
+        params: { category },
+      }),
+      keepUnusedDataFor: 5,
+    }),
+
     // GET ONE product
     getProductDetails: builder.query({
       // use redux toolkit to send get query to PRODUCTS_URL -> "/api/products/:id"
@@ -24,5 +35,8 @@ export const productsApiSlice = apiSlice.injectEndpoints({
   }),
 });
 
-export const { useGetProductsQuery, useGetProductDetailsQuery } =
-  productsApiSlice;
+export const {
+  useGetProductsQuery,
+  useGetProductsByCategoryQuery,
+  useGetProductDetailsQuery,
+} = productsApiSlice;

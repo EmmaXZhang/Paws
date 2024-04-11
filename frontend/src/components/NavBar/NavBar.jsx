@@ -46,10 +46,10 @@ export default function NavBar({ user, setUser }) {
           >
             <Nav>
               <LinkContainer to="/dogs">
-                <Nav.Link>Dog</Nav.Link>
+                <Nav.Link>DOGS</Nav.Link>
               </LinkContainer>
               <LinkContainer to="/cats">
-                <Nav.Link>Cat</Nav.Link>
+                <Nav.Link>CATS</Nav.Link>
               </LinkContainer>
 
               <LinkContainer to="/cart">

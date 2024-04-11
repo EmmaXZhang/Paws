@@ -10,6 +10,8 @@ import HomePage from "../HomePage/HomePage";
 import ProductPage from "../ProductPage/ProductPage";
 import CartPage from "../CartPage/CartPage.jsx";
 import AllProductPage from "../AllProductPage/AllProductpage.jsx";
+import DogPage from "../DogPage/DogPage.jsx";
+import CatPage from "../CartPage/CartPage.jsx";
 
 function App() {
   const [user, setUser] = useState(getUser());
@@ -25,6 +27,8 @@ function App() {
                 {/* go to url */}
                 <Route path="/" element={<HomePage />} />
                 <Route path="/products" element={<AllProductPage />} />
+                <Route path="/dogs" element={<DogPage />} />
+                <Route path="/cats" element={<CatPage />} />
                 <Route path="/products/:id" element={<ProductPage />} />
                 <Route path="/cart" element={<CartPage />} />
               </Routes>
