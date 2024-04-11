@@ -10,7 +10,7 @@ const { protect, admin } = require("../../config/authMiddleware");
 router.post("/login", usersCtrl.login);
 
 // POST /api/users/logout
-router.post("/logout", usersCtrl.logoutUser);
+router.post("/logout", usersCtrl.logout);
 
 // POST /api/users
 router.post("/", usersCtrl.create);
