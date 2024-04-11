@@ -5,6 +5,7 @@ const path = require("path");
 const logger = require("morgan");
 require("dotenv").config();
 require("./config/database");
+const cookieParser = require("cookie-parser");
 
 const app = express();
 
@@ -12,8 +13,7 @@ app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 app.use(express.static(path.join(__dirname, "dist")));
-
-app.use(require("./config/checkToken"));
+app.use(cookieParser());
 
 app.use("/api/users", require("./routes/api/users"));
 

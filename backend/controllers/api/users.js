@@ -8,31 +8,42 @@ const bcrypt = require("bcrypt");
 async function login(req, res) {
   const { email, password } = req.body;
   try {
-    //user we need to query for the user based upon their email
-    //and then verify the password is correct using bcrypt’s compare method.
     const user = await User.findOne({ email });
+    if (user && (await user.matchPassword(password))) {
+      //generate Token
+      const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
+        expiresIn: "60d",
+      });
 
-    if (!user) throw new Error("invalid email or password");
+      // set jwt as HTTP only cookie
+      res.cookie("jwt", token, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV !== "development",
+        sameSite: "strict",
+        maxAge: 60 * 24 * 60 * 60 * 1000,
+      });
 
-    //compare password to hashed password (user.password)
-    const match = await bcrypt.compare(password, user.password);
-    if (!match) {
-      return res.status(401).json({ error: "invalid email or password" });
+      res.json({
+        _id: user._id,
+        name: user.name,
+        email: user.email,
+        isAdmin: user.isAdmin,
+      });
+    } else {
+      res.status(401);
+      throw new Error("Invalid email or password");
     }
-    //if match, send back JWT token
-    const token = createJWT(user);
-    // Return user information along with the token
-    res.json({
-      _id: user._id,
-      name: user.name,
-      email: user.email,
-      isAdmin: user.isAdmin,
-      token,
-    });
   } catch (err) {
     console.log(err);
     res.status(500).json({ error: "internal server error" });
   }
+}
+
+// Logout user / clear cookie
+// POST /api/users/logout
+function logout(req, res) {
+  res.clearCookie("jwt");
+  res.status(200).json({ message: "Logged out successfully" });
 }
 
 // RegisterUser
@@ -59,6 +70,7 @@ async function create(req, res) {
 // getUser Profile
 // GET /api/users/profile
 async function getUserProfile(req, res) {
+  console.log("req.user", req.user);
   const user = await User.findById(req.user._id);
   if (user) {
     res.json({
@@ -184,6 +196,7 @@ function checkToken(req, res) {
 
 module.exports = {
   login,
+  logout,
   create,
   getUserProfile,
   updateUserProfile,

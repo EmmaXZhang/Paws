@@ -1,6 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { apiSlice } from "./slices/apiSlice";
 import cartSliceReducer from "./slices/cartSlice";
+// import authliceReducer from "./slices/authSlice";
+// import userliceReducer from "./slices/userliceReducer";
 
 const store = configureStore({
   //specify the reducer which will be used to manage the state

@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { LinkContainer } from "react-router-bootstrap";
-import * as userService from "../../utilities/users-service";
+// import * as userService from "../../utilities/users-service";
 import { Badge, Navbar, Nav, Container } from "react-bootstrap";
 import { FaShoppingCart, FaUser } from "react-icons/fa";
 import { useLocation } from "react-router-dom";
@@ -9,7 +9,7 @@ import logo from "/images/PAWS.png";
 
 import "./NavBar.css";
 
-export default function NavBar({ user, setUser }) {
+export default function NavBar() {
   // store.js -> reducer -> cart -> cartSlice
   const { cartItems } = useSelector((state) => state.cart);
   const location = useLocation();
@@ -18,12 +18,12 @@ export default function NavBar({ user, setUser }) {
     ? "navbar navbar-expand-lg navbar-light home-nav"
     : "navbar navbar-expand-lg";
 
-  function handleLogOut() {
-    //remove token
-    userService.LogOut();
-    //set user to null
-    setUser(null);
-  }
+  // function handleLogOut() {
+  //   //remove token
+  //   userService.LogOut();
+  //   //set user to null
+  //   setUser(null);
+  // }
 
   return (
     <header>
@@ -66,7 +66,7 @@ export default function NavBar({ user, setUser }) {
                 </Nav.Link>
               </LinkContainer>
 
-              <LinkContainer to="" onClick={handleLogOut}>
+              <LinkContainer to="">
                 <Nav.Link>
                   <FaUser /> Log out
                 </Nav.Link>

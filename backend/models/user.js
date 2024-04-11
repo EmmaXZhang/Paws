@@ -39,6 +39,11 @@ const userSchema = new Schema(
   }
 );
 
+// Match user entered password to hashed password in database
+userSchema.methods.matchPassword = async function (enteredPassword) {
+  return await bcrypt.compare(enteredPassword, this.password);
+};
+
 // hash password anytime the password has changed
 userSchema.pre("save", async function (next) {
   if (!this.isModified("password")) return next();
