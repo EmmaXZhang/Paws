@@ -5,7 +5,7 @@ header {
   position: relative;
 }
 .navbar {
-  background-color: #f8f9fa;
+  background-color: white;
   padding: 1rem;
 }
 
@@ -25,7 +25,7 @@ nav {
   position: fixed;
   top: 0;
   z-index: 2; /* Ensures visibility over other content */
-  background-color: rgba(0, 0, 0, 0.5); /* Default style for non-home pages */
+  background-color: rgba(0, 0, 0, 0.5); /*Default style for non-home pages */
 }
 
 nav.home-nav {

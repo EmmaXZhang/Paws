@@ -10,7 +10,7 @@ const HeroBanner = () => {
       </video>
       <div className="hero-content">
         <h1>LUXURY FASHION FOR PETS</h1>
-        <Link to="/learn-more" className="btn btn-outline-light banner-button">
+        <Link to="/products" className="btn btn-outline-light banner-button">
           SHOP NOW
         </Link>
       </div>

@@ -16,7 +16,7 @@ export default function NavBar({ user, setUser }) {
   const isHomePage = location.pathname === "/";
   const classNames = isHomePage
     ? "navbar navbar-expand-lg navbar-light home-nav"
-    : "navbar navbar-expand-lg navbar-light bg-light";
+    : "navbar navbar-expand-lg";
 
   function handleLogOut() {
     //remove token
