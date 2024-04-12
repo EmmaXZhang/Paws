@@ -1,13 +1,13 @@
 body {
   margin: 0;
-  display: flex;
-  justify-content: center;
   min-width: 320px;
   min-height: 100vh;
-  width: 100vw;
   color: RGB(58, 58, 62);
 }
-
+#root {
+  flex-grow: 1;
+  flex-basis: 0;
+}
 main {
   min-height: 80vh;
 }

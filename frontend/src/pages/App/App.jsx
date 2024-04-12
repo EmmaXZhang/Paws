@@ -17,7 +17,9 @@ import RegisterPage from "../RegisterPage/RegisterPage.jsx";
 function App() {
   return (
     <>
-      <NavBar />
+      <Container>
+        <NavBar />
+      </Container>
       <ToastContainer />
       <main className="py-3">
         <Container>
