@@ -1,14 +1,14 @@
-import { Container, Row, Col, Button, Form } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import backgroundImage from "/images/signIn.jpg";
 import "./LoginPage.css";
 import { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import Loader from "../../components/Loader/Loader";
 import { useLoginMutation } from "../../slices/usersApiSlice";
 import { setCredentials } from "../../slices/authSlice";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Login from "../../components/Login/Login";
 
 const LogInForm = () => {
   const [email, setEmail] = useState("");
@@ -66,33 +66,14 @@ const LogInForm = () => {
       <Container>
         <Row className="justify-coentern-lg-center">
           <Col xs={12} md={12}>
-            <Form onSubmit={submitHandler}>
-              <Form.Group controlId="email" className="my-3">
-                <Form.Label>Emial Address</Form.Label>
-                <Form.Control
-                  type="email"
-                  placeholder="Enter emial"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                ></Form.Control>
-              </Form.Group>
-
-              <Form.Group controlId="password" className="my-3">
-                <Form.Label>Password</Form.Label>
-                <Form.Control
-                  type="password"
-                  placeholder="Enter password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                ></Form.Control>
-              </Form.Group>
-
-              <Button type="submit" variant="primary" className="mt-2">
-                Sign In
-              </Button>
-
-              {isLoading && <Loader />}
-            </Form>
+            <Login
+              email={email}
+              setEmail={setEmail}
+              password={password}
+              setPassword={setPassword}
+              submitHandler={submitHandler}
+              isLoading={isLoading}
+            />
 
             <Row className="py-3">
               <Col>
