@@ -1,8 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+//set user authentication to localstorage and remove it
 const initialState = {
-  userInfo: localStorage.getItem("userInfo")
-    ? JSON.parse(localStorage.getItem("userInfo"))
+  //check if there is userData(label name) in local storage
+  userData: localStorage.getItem("userData")
+    ? JSON.parse(localStorage.getItem("userData"))
     : null,
 };
 
@@ -11,11 +13,11 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     setCredentials: (state, action) => {
-      state.userInfo = action.payload;
-      localStorage.setItem("userInfo", JSON.stringify(action.payload));
+      state.userData = action.payload;
+      localStorage.setItem("userData", JSON.stringify(action.payload));
     },
     logout: (state, action) => {
-      state.userInfo = null;
+      state.userData = null;
       // remove the cart from storage so the next
       // logged in user doesn't inherit the previous users cart and shipping
       localStorage.clear();

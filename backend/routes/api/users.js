@@ -3,7 +3,7 @@
 const express = require("express");
 const router = express.Router();
 const usersCtrl = require("../../controllers/api/users");
-const { protect, admin } = require("../../config/authMiddleware");
+const { protect, admin } = require("../../config/authorization");
 
 // General users---------------------------
 // POST /api/users/login

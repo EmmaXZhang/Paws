@@ -1,6 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { apiSlice } from "./slices/apiSlice";
 import cartSliceReducer from "./slices/cartSlice";
+import authSliceReducer from "./slices/authSlice";
 // import authliceReducer from "./slices/authSlice";
 // import userliceReducer from "./slices/userliceReducer";
 
@@ -9,10 +10,12 @@ const store = configureStore({
   // reducer:how the state changes in response to dispatched actions.
   //use a reducer provided by apiSlice and associating it with a specific slice of state identified by apiSlice.reducerPath.
   reducer: {
+    //access actions in reducer
     [apiSlice.reducerPath]: apiSlice.reducer,
+
     // add more new reducers from slice
-    //access actions in cartSlice
     cart: cartSliceReducer,
+    auth: authSliceReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(apiSlice.middleware),

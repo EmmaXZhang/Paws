@@ -18,13 +18,6 @@ export default function NavBar() {
     ? "navbar navbar-expand-lg navbar-light home-nav"
     : "navbar navbar-expand-lg";
 
-  // function handleLogOut() {
-  //   //remove token
-  //   userService.LogOut();
-  //   //set user to null
-  //   setUser(null);
-  // }
-
   return (
     <header>
       <Navbar expand="lg" className={classNames} collapseOnSelect>
@@ -68,7 +61,7 @@ export default function NavBar() {
 
               <LinkContainer to="">
                 <Nav.Link>
-                  <FaUser /> Log out
+                  <FaUser /> Sign In
                 </Nav.Link>
               </LinkContainer>
             </Nav>
