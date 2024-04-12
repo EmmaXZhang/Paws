@@ -25,7 +25,7 @@ async function login(req, res) {
     }
   } catch (err) {
     console.log(err);
-    res.status(500).json({ error: "internal server error" });
+    res.status(500).json({ error: err.message });
   }
 }
 
@@ -98,7 +98,7 @@ async function updateUserProfile(req, res) {
     user.name = req.body.name || user.name;
     user.email = req.body.email || user.email;
 
-    // password is harshed so have seperate block code
+    // password is harshed so have seperate block
     if (req.body.password) {
       user.password = req.body.password;
     }

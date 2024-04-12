@@ -17,6 +17,7 @@ function App() {
   return (
     <>
       <NavBar />
+      <ToastContainer />
       <main className="py-3">
         <Container>
           <Routes>
@@ -32,7 +33,6 @@ function App() {
         </Container>
       </main>
       <Footer />
-      <ToastContainer />
     </>
   );
 }

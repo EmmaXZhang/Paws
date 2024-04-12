@@ -44,9 +44,8 @@ const LogInForm = () => {
       dispatch(setCredentials({ ...res }));
       navigate(redirect);
     } catch (error) {
-      toast.error(error?.data?.message || error.error, {
-        position: "top-center",
-      });
+      console.log(error);
+      toast.error(error?.data?.message || error.data.error || error.error);
     }
   }
 
