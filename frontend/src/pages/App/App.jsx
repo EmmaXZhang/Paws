@@ -12,6 +12,7 @@ import AllProductPage from "../AllProductPage/AllProductpage.jsx";
 import DogPage from "../DogPage/DogPage.jsx";
 import CatPage from "../CatPage/CatPage.jsx";
 import LoginPage from "../LoginPage/LoginPage.jsx";
+import RegisterPage from "../RegisterPage/RegisterPage.jsx";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
             <Route path="/products/:id" element={<ProductPage />} />
             <Route path="/cart" element={<CartPage />} />
             <Route path="/login" element={<LoginPage />} />
+            <Route path="/register" element={<RegisterPage />} />
           </Routes>
         </Container>
       </main>

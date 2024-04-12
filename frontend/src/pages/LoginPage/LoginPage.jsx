@@ -10,7 +10,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Login from "../../components/Login/Login";
 
-const LogInForm = () => {
+const LogInPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -79,7 +79,7 @@ const LogInForm = () => {
               <Col>
                 New Customer?{" "}
                 <Link
-                  to={redirect ? "/register?redirect=${redirect}" : `/register`}
+                  to={redirect ? `/register?redirect=${redirect}` : `/register`}
                 >
                   Register
                 </Link>
@@ -92,4 +92,4 @@ const LogInForm = () => {
   );
 };
 
-export default LogInForm;
+export default LogInPage;
