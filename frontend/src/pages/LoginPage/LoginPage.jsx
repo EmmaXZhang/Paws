@@ -1,10 +1,38 @@
 import { Container, Row, Col, Button, Form } from "react-bootstrap";
-import useState from "react";
-import { Link } from "react-router-dom";
+import backgroundImage from "/images/signIn.jpg";
+import "./LoginPage.css";
+import { useState, useEffect } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import Loader from "../../components/Loader/Loader";
+import { useLoginMutation } from "../../slices/usersApiSlice";
+import { setCredentials } from "../../slices/authSlice";
+import { toast } from "react-toastify";
 
 const LogInForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  //destructure loginMutation, isLoading is auto created
+  const [login, { isLoading }] = useLoginMutation();
+  // retrieve userData from local storage state
+  const { userData } = useSelector((state) => state.auth);
+
+  //get the current location object, search -> query params
+  const { search } = useLocation();
+  const searchParams = new URLSearchParams(search);
+  // pass "search" from useLocation() to URLSearhParams to see is there 'redirect' on url,if there is->go the redirect url,othewise go to home path
+  // check CART url setting
+  const redirect = searchParams.get("redirect") || "/";
+
+  useEffect(() => {
+    if (userData) {
+      navigate(redirect);
+    }
+  }, [userData, redirect, navigate]);
 
   function submitHandler(e) {
     e.preventDefault();
@@ -13,10 +41,21 @@ const LogInForm = () => {
 
   return (
     <div>
+      <div
+        className="background-image d-flex justify-content-center align-items-center"
+        style={{ backgroundImage: `url(${backgroundImage})` }}
+      >
+        <div className="overlay" style={{ zIndex: 0 }}></div>
+        <Row style={{ zIndex: 1 }}>
+          <Col>
+            <span>Sign In</span>
+          </Col>
+        </Row>
+      </div>
+
       <Container>
-        <Row className="justify-coentern-md-center">
-          <Col xs={12} md={6}>
-            <h1>Log In</h1>
+        <Row className="justify-coentern-lg-center">
+          <Col xs={12} md={12}>
             <Form onSubmit={submitHandler}>
               <Form.Group controlId="email" className="my-3">
                 <Form.Label>Emial Address</Form.Label>

@@ -59,7 +59,7 @@ export default function NavBar() {
                 </Nav.Link>
               </LinkContainer>
 
-              <LinkContainer to="">
+              <LinkContainer to="/login">
                 <Nav.Link>
                   <FaUser /> Sign In
                 </Nav.Link>
