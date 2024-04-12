@@ -8,6 +8,7 @@ import Loader from "../../components/Loader/Loader";
 import { useLoginMutation } from "../../slices/usersApiSlice";
 import { setCredentials } from "../../slices/authSlice";
 import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const LogInForm = () => {
   const [email, setEmail] = useState("");
@@ -34,9 +35,19 @@ const LogInForm = () => {
     }
   }, [userData, redirect, navigate]);
 
-  function submitHandler(e) {
+  async function submitHandler(e) {
     e.preventDefault();
-    console.log("submit");
+    try {
+      // unwrap() extracts the actual value from backend
+      // unwrapping it from the Promise object.
+      const res = await login({ email, password }).unwrap();
+      dispatch(setCredentials({ ...res }));
+      navigate(redirect);
+    } catch (error) {
+      toast.error(error?.data?.message || error.error, {
+        position: "top-center",
+      });
+    }
   }
 
   return (
@@ -80,11 +91,18 @@ const LogInForm = () => {
               <Button type="submit" variant="primary" className="mt-2">
                 Sign In
               </Button>
+
+              {isLoading && <Loader />}
             </Form>
 
             <Row className="py-3">
               <Col>
-                New Customer? <Link to="/register">Register</Link>
+                New Customer?{" "}
+                <Link
+                  to={redirect ? "/register?redirect=${redirect}" : `/register`}
+                >
+                  Register
+                </Link>
               </Col>
             </Row>
           </Col>

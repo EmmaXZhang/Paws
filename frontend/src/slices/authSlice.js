@@ -16,10 +16,9 @@ const authSlice = createSlice({
       state.userData = action.payload;
       localStorage.setItem("userData", JSON.stringify(action.payload));
     },
+    //clear user data from local storage
     logout: (state, action) => {
       state.userData = null;
-      // remove the cart from storage so the next
-      // logged in user doesn't inherit the previous users cart and shipping
       localStorage.clear();
     },
   },
