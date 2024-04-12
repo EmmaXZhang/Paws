@@ -7,7 +7,9 @@ import { useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 import logo from "/images/PAWS.png";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { logout } from "../../slices/authSlice";
+import { useLogoutMutation } from "../../slices/usersApiSlice";
 
 import "./NavBar.css";
 
@@ -23,9 +25,21 @@ export default function NavBar() {
     : "navbar navbar-expand-lg";
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  function logoutHandler() {
-    dispatch(logout);
+  //destrucure useLogoutMutation
+  const [logoutBackend] = useLogoutMutation();
+
+  async function logoutHandler() {
+    try {
+      //clear backend data
+      await logoutBackend().unwrap();
+      //clear localstorage data
+      dispatch(logout());
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   return (

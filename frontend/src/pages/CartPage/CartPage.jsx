@@ -13,7 +13,6 @@ import { FaTrash } from "react-icons/fa";
 import Message from "../../components/Message";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, removeFromCart } from "../../slices/cartSlice";
-import React from "react";
 
 const CartPage = () => {
   const navigate = useNavigate();
