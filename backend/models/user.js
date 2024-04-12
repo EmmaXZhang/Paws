@@ -29,7 +29,6 @@ const userSchema = new Schema(
   },
   {
     timestamps: true,
-    // Specify how the document should be transformed when converted to JSON
     toJSON: {
       transform: function (doc, ret) {
         delete ret.password;
@@ -39,7 +38,7 @@ const userSchema = new Schema(
   }
 );
 
-// Match user entered password to hashed password in database
+// Match entered password to hashed password in database
 userSchema.methods.matchPassword = async function (enteredPassword) {
   return await bcrypt.compare(enteredPassword, this.password);
 };
