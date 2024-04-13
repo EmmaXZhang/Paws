@@ -58,14 +58,13 @@ const ShippingPage = () => {
         />
       </Col>
       <Col xs={12} md={4}>
-        <h2>Payment</h2>
+        <h2>Payment Method</h2>
 
         <Form
           onSubmit={submitPaymentHandler}
           className="justify-content-lg-center mt-5"
         >
           <Form.Group>
-            <Form.Label as="legend">Select Method</Form.Label>
             <Col>
               <Form.Check
                 className="my-2"

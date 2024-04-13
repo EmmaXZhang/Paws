@@ -14,7 +14,7 @@ async function create(req, res) {
       totalPrice,
     } = req.body;
 
-    if (cartItems && cartItems.length === 0) {
+    if (orderItems && orderItems.length === 0) {
       res.status(400);
     } else {
       const order = new Order({
@@ -23,6 +23,7 @@ async function create(req, res) {
           product: item._id,
           _id: undefined,
         })),
+        paymentMethod,
         user: req.user._id,
         shippingAddress,
         itemsPrice,

@@ -15,6 +15,7 @@ import LoginPage from "../LoginPage/LoginPage.jsx";
 import RegisterPage from "../RegisterPage/RegisterPage.jsx";
 import CheckoutPage from "../CheckoutPage/CheckoutPage.jsx";
 import PrivateRoute from "../../components/PrivateRoute.jsx";
+import PlaceOrderPage from "../PlaceOrderPage/PlaceOrderPage.jsx";
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
             {/* private route to define path */}
             <Route path="" element={<PrivateRoute />}>
               <Route path="/checkout" element={<CheckoutPage />} />
+              <Route path="/placeorder" element={<PlaceOrderPage />} />
             </Route>
           </Routes>
         </Container>

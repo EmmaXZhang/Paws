@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { createSlice } from "@reduxjs/toolkit";
 import { updateCart } from "../utilities/cartUtils";
 
@@ -47,14 +48,24 @@ const cartSlice = createSlice({
     },
 
     savePayment: (state, action) => {
-      state.paymentMethod = action.payload;
+      state.payment = action.payload;
+      return updateCart(state);
+    },
+
+    clearCart: (state, action) => {
+      state.cartItems = [];
       return updateCart(state);
     },
   },
 });
 
 //cartSlice.actions -> enable other component can use this function.
-export const { addToCart, removeFromCart, saveShippingAddress, savePayment } =
-  cartSlice.actions;
+export const {
+  addToCart,
+  removeFromCart,
+  saveShippingAddress,
+  savePayment,
+  clearCart,
+} = cartSlice.actions;
 
 export default cartSlice.reducer;
