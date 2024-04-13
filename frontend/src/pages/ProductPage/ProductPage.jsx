@@ -23,8 +23,6 @@ export default function ProductPage() {
   const [quantity, setQuantity] = useState(1);
 
   const dispatch = useDispatch();
-  // const navigate = useNavigate();
-
   const { data: product, isLoading, error } = useGetProductDetailsQuery(id);
 
   function addToCartHandler() {

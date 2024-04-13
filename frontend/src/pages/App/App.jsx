@@ -13,7 +13,8 @@ import DogPage from "../DogPage/DogPage.jsx";
 import CatPage from "../CatPage/CatPage.jsx";
 import LoginPage from "../LoginPage/LoginPage.jsx";
 import RegisterPage from "../RegisterPage/RegisterPage.jsx";
-import ShippingPage from "../ShippingPage/ShippingPage.jsx";
+import CheckoutPage from "../CheckoutPage/CheckoutPage.jsx";
+import PrivateRoute from "../../components/PrivateRoute.jsx";
 
 function App() {
   return (
@@ -34,7 +35,11 @@ function App() {
             <Route path="/cart" element={<CartPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
-            <Route path="/shipping" element={<ShippingPage />} />
+
+            {/* private route to define path */}
+            <Route path="" element={<PrivateRoute />}>
+              <Route path="/checkout" element={<CheckoutPage />} />
+            </Route>
           </Routes>
         </Container>
       </main>
