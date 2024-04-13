@@ -13,6 +13,7 @@ import DogPage from "../DogPage/DogPage.jsx";
 import CatPage from "../CatPage/CatPage.jsx";
 import LoginPage from "../LoginPage/LoginPage.jsx";
 import RegisterPage from "../RegisterPage/RegisterPage.jsx";
+import ShippingPage from "../ShippingPage/ShippingPage.jsx";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
             <Route path="/cart" element={<CartPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
+            <Route path="/shipping" element={<ShippingPage />} />
           </Routes>
         </Container>
       </main>
