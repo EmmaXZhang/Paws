@@ -7,7 +7,7 @@ const initialState = localStorage.getItem("cart")
   : {
       cartItems: [],
       shippingAddress: {},
-      payment: "paypal",
+      payment: "",
     };
 
 const cartSlice = createSlice({
@@ -45,11 +45,16 @@ const cartSlice = createSlice({
       state.shippingAddress = action.payload;
       return updateCart(state);
     },
+
+    savePayment: (state, action) => {
+      state.paymentMethod = action.payload;
+      return updateCart(state);
+    },
   },
 });
 
 //cartSlice.actions -> enable other component can use this function.
-export const { addToCart, removeFromCart, saveShippingAddress } =
+export const { addToCart, removeFromCart, saveShippingAddress, savePayment } =
   cartSlice.actions;
 
 export default cartSlice.reducer;
