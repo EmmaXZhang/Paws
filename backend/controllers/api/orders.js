@@ -4,7 +4,36 @@ const Order = require("../../models/order");
 //POST /api/orders
 async function create(req, res) {
   try {
-    res.send("add order items");
+    const {
+      orderItems,
+      shippingAddress,
+      paymentMethod,
+      itemsPrice,
+      taxPrice,
+      shippingPrice,
+      totalPrice,
+    } = req.body;
+
+    if (cartItems && cartItems.length === 0) {
+      res.status(400);
+    } else {
+      const order = new Order({
+        orderItems: orderItems.map((item) => ({
+          ...item,
+          product: item._id,
+          _id: undefined,
+        })),
+        user: req.user._id,
+        shippingAddress,
+        itemsPrice,
+        taxPrice,
+        shippingPrice,
+        totalPrice,
+      });
+
+      const createOrder = await order.save();
+      res.status(201).json(createOrder);
+    }
   } catch (error) {
     console.log("create an order", error);
   }
@@ -27,10 +56,7 @@ async function getOrders(req, res) {
 //Get order by ID
 // GET /api/orders/:id
 async function getOrderById(req, res) {
-  const order = await Order.findById(req.params.id).populate(
-    "user",
-    "name email"
-  );
+  const order = await Order.findById(req.params.id).populate("user");
 
   if (order) {
     res.json(order);
