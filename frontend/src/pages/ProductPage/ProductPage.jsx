@@ -23,7 +23,7 @@ export default function ProductPage() {
   const [quantity, setQuantity] = useState(1);
 
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const { data: product, isLoading, error } = useGetProductDetailsQuery(id);
 
@@ -31,7 +31,7 @@ export default function ProductPage() {
     // product -> data:product
     // merge proudct and quantity into one object, which is the payload in the action
     dispatch(addToCart({ ...product, quantity }));
-    navigate("/cart");
+    // navigate("/cart");
   }
 
   return (

@@ -76,8 +76,8 @@ const RegisterPage = () => {
       </div>
 
       <Container>
-        <Row className="justify-coentern-lg-center">
-          <Col xs={12} md={12}>
+        <Row className="justify-content-lg-center mt-5">
+          <Col xs={12} md={6}>
             <Form onSubmit={submitHandler}>
               <Form.Group controlId="name" className="my-3">
                 <Form.Label>Name</Form.Label>
