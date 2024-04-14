@@ -16,7 +16,7 @@ import RegisterPage from "../RegisterPage/RegisterPage.jsx";
 import CheckoutPage from "../CheckoutPage/CheckoutPage.jsx";
 import PrivateRoute from "../../components/PrivateRoute.jsx";
 import PlaceOrderPage from "../PlaceOrderPage/PlaceOrderPage.jsx";
-import OrderPage from "../OrderPage/OrderPage.jsx";
+import ProcessPaymentPage from "../ProcessPaymentPage/ProcessPaymentPage.jsx";
 import MyOrdersPage from "../MyOrdersPage/MyOrdersPage.jsx";
 
 function App() {
@@ -38,7 +38,7 @@ function App() {
             <Route path="/cart" element={<CartPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
-            <Route path="/orders/:id" element={<OrderPage />} />
+            <Route path="/orders/:id" element={<ProcessPaymentPage />} />
 
             {/* private route to define path */}
             <Route path="" element={<PrivateRoute />}>

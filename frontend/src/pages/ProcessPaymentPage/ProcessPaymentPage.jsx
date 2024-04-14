@@ -1,12 +1,13 @@
 import { Link, useParams } from "react-router-dom";
-import { Row, Col, ListGroup, Image, Form, Button, Card } from "react-bootstrap";
+import { Row, Col, ListGroup, Image } from "react-bootstrap";
 import Loader from "../../components/Loader/Loader";
-import { useGetProductDetailsQuery } from "../../slices/productsApiSlice";
+import { useGetOrderByIdQuery } from "../../slices/ordersApiSlice";
+import paymentImg from "/images/payment.png";
 
-const OrderPage = () => {
+const ProcessPaymentPage = () => {
   const { id } = useParams();
 
-  const { data: order, isLoading } = useGetProductDetailsQuery(id);
+  const { data: order, isLoading } = useGetOrderByIdQuery(id);
 
   return isLoading ? (
     <Loader />
@@ -14,7 +15,7 @@ const OrderPage = () => {
     <>
       <h1>Order {order._id}</h1>
       <Row>
-        <Col md={8}>
+        <Col md={6}>
           <ListGroup.Item>
             <h2>Shipping</h2>
             <p>
@@ -53,9 +54,12 @@ const OrderPage = () => {
             </ListGroup.Item>
           </ListGroup>
         </Col>
+        <Col md={6}>
+          <Image src={paymentImg} />
+        </Col>
       </Row>
     </>
   );
 };
 
-export default OrderPage;
+export default ProcessPaymentPage;

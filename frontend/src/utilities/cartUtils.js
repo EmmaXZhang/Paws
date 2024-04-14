@@ -7,10 +7,7 @@ export function updateCart(state) {
   // state.cartItems -> defined in initialState
   // item.price -> THE product's price
   //item.quantity coming from product detail page's quantity
-  const itemsPrice = state.cartItems.reduce(
-    (acc, item) => acc + (item.price * 100 * item.quantity) / 100,
-    0
-  );
+  const itemsPrice = state.cartItems.reduce((acc, item) => acc + (item.price * 100 * item.quantity) / 100, 0);
   state.itemsPrice = addDecimals(itemsPrice);
 
   //calculate shipping price
@@ -18,7 +15,7 @@ export function updateCart(state) {
   state.shippingPrice = addDecimals(shippingPrice);
 
   //calculate tax (10%)
-  const taxPrice = 0.15 * itemsPrice;
+  const taxPrice = 0.1 * itemsPrice;
   state.taxPrice = addDecimals(taxPrice);
 
   //caculate total
