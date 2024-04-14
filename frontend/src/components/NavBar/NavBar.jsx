@@ -20,9 +20,7 @@ export default function NavBar() {
 
   const location = useLocation();
   const isHomePage = location.pathname === "/";
-  const classNames = isHomePage
-    ? "navbar navbar-expand-lg navbar-light home-nav"
-    : "navbar navbar-expand-lg";
+  const classNames = isHomePage ? "navbar navbar-expand-lg navbar-light home-nav" : "navbar navbar-expand-lg";
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -48,19 +46,12 @@ export default function NavBar() {
         <Container className="justify-content-between">
           <LinkContainer to="/">
             <Navbar.Brand>
-              <img
-                src={logo}
-                alt="logo"
-                style={{ height: "120px", width: "180px" }}
-              />
+              <img src={logo} alt="logo" style={{ height: "120px", width: "180px" }} />
             </Navbar.Brand>
           </LinkContainer>
 
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse
-            id="basic-navbar-nav"
-            className="justify-content-end"
-          >
+          <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
             <Nav>
               <LinkContainer to="/dogs">
                 <Nav.Link>DOGS</Nav.Link>
@@ -74,10 +65,7 @@ export default function NavBar() {
                   <FaShoppingCart /> Cart
                   {cartItems.length > 0 && (
                     <Badge pill bg="success" style={{ marginLeft: "5px" }}>
-                      {cartItems.reduce(
-                        (acc, currentItem) => acc + currentItem.quantity,
-                        0
-                      )}
+                      {cartItems.reduce((acc, currentItem) => acc + currentItem.quantity, 0)}
                     </Badge>
                   )}
                 </Nav.Link>
@@ -85,12 +73,10 @@ export default function NavBar() {
 
               {userData ? (
                 <NavDropdown title={userData.name} id="username">
-                  <LinkContainer to="/profile">
-                    <NavDropdown.Item>Profile</NavDropdown.Item>
+                  <LinkContainer to="/myorders">
+                    <NavDropdown.Item>My Orders</NavDropdown.Item>
                   </LinkContainer>
-                  <NavDropdown.Item onClick={logoutHandler}>
-                    Logout
-                  </NavDropdown.Item>
+                  <NavDropdown.Item onClick={logoutHandler}>Logout</NavDropdown.Item>
                 </NavDropdown>
               ) : (
                 <LinkContainer to="/login">

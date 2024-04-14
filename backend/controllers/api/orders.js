@@ -4,15 +4,7 @@ const Order = require("../../models/order");
 //POST /api/orders
 async function create(req, res) {
   try {
-    const {
-      orderItems,
-      shippingAddress,
-      paymentMethod,
-      itemsPrice,
-      taxPrice,
-      shippingPrice,
-      totalPrice,
-    } = req.body;
+    const { orderItems, shippingAddress, paymentMethod, itemsPrice, taxPrice, shippingPrice, totalPrice } = req.body;
 
     if (orderItems && orderItems.length === 0) {
       res.status(400);
@@ -43,7 +35,7 @@ async function create(req, res) {
 // Get logged-in user orders
 // GET /api/orders/myorders
 async function getMyOrders(req, res) {
-  const orders = await Order.find({ user: req.user._id });
+  const orders = await Order.find({ user: req.user._id }).populate("product");
   res.json(orders);
 }
 
