@@ -6,6 +6,7 @@ export const ordersApiSlice = apiSlice.injectEndpoints({
       query: (order) => ({
         url: "/api/orders",
         method: "POST",
+        //spread the properties of the order object. create a copy of order
         body: { ...order },
       }),
     }),
