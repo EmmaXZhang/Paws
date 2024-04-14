@@ -20,13 +20,13 @@ router.get("/profile", protect, usersCtrl.getUserProfile);
 router.put("/profile", protect, usersCtrl.updateUserProfile);
 
 // Admin users---------------------------
-//GET /api/users
-router.get("/", protect, admin, usersCtrl.getUsers);
-//DELETE /api/users/:id
-router.delete("/:id", protect, admin, usersCtrl.deleteUser);
-// GET /api/users/:id
-router.get("/:id", protect, admin, usersCtrl.getUserById);
-//PUT /api/users/:id
-router.put("/:id", protect, admin, usersCtrl.updateUser);
+// //GET /api/users
+// router.get("/", protect, admin, usersCtrl.getUsers);
+// //DELETE /api/users/:id
+// router.delete("/:id", protect, admin, usersCtrl.deleteUser);
+// // GET /api/users/:id
+// router.get("/:id", protect, admin, usersCtrl.getUserById);
+// //PUT /api/users/:id
+// router.put("/:id", protect, admin, usersCtrl.updateUser);
 
 module.exports = router;
