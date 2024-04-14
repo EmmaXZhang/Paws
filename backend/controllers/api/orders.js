@@ -35,7 +35,7 @@ async function create(req, res) {
 // Get logged-in user orders
 // GET /api/orders/myorders
 async function getMyOrders(req, res) {
-  const orders = await Order.find({ user: req.user._id }).populate("product");
+  const orders = await Order.find({ user: req.user._id });
   res.json(orders);
 }
 
