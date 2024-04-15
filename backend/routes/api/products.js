@@ -1,8 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const productsCtrl = require("../../controllers/api/products");
-// const upload = require("../../utils/multer");
-// const ensureLoggedIn = require("../../config/ensureLoggedIn");
 
 // POST /api/productss/new
 // router.post("/new", upload.single("image"), productsCtrl.create);

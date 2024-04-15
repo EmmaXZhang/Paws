@@ -19,7 +19,8 @@ import PlaceOrderPage from "../PlaceOrderPage/PlaceOrderPage.jsx";
 import ProcessPaymentPage from "../ProcessPaymentPage/ProcessPaymentPage.jsx";
 import MyOrdersPage from "../MyOrdersPage/MyOrdersPage.jsx";
 import Admin from "../../components/Admin.jsx";
-import OrderListPage from "../OrderListsPage/OrderListPage.jsx";
+import OrderListPage from "../OrderListPage/OrderListPage.jsx";
+import ProductListPage from "../ProductListPage/ProductListPage.jsx";
 
 function App() {
   return (
@@ -51,6 +52,7 @@ function App() {
 
             <Route path="" element={<Admin />}>
               <Route path="/admin/orderlist" element={<OrderListPage />} />
+              <Route path="/admin/productlist" element={<ProductListPage />} />
             </Route>
           </Routes>
         </Container>
