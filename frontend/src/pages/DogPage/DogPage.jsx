@@ -20,16 +20,15 @@ export default function DogPage() {
     products.forEach((product) => categoryList.add(product.category));
     categoryList = Array.from(categoryList);
   }
-  categoryList.unshift("All Products");
 
   let filteredProducts = products;
 
-  if (categorySelect !== "All Products") {
+  if (categorySelect) {
     filteredProducts = filteredProducts.filter((product) => product.category === categorySelect);
   }
 
   function categorySelectHandler(selectedCategory) {
-    setCategorySelect(selectedCategory);
+    setCategorySelect(selectedCategory === categorySelect ? null : selectedCategory);
   }
 
   return (

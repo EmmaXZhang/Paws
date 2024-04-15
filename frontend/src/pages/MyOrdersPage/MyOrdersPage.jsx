@@ -1,15 +1,27 @@
 import Loader from "../../components/Loader/Loader";
 import { useGetMyOrdersQuery } from "../../slices/ordersApiSlice";
-import { Accordion, Row } from "react-bootstrap";
+import { Accordion, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import OrderDetail from "../../components/OrderDetail/OrderDetail";
+import backgroundImage from "/images/dog-page.jpeg";
 
 const MyOrdersPage = () => {
   const { data: orders, isLoading } = useGetMyOrdersQuery();
 
   return (
     <>
-      <h2>My Orders</h2>
+      <div
+        className="background-image d-flex justify-content-center align-items-center"
+        style={{ backgroundImage: `url(${backgroundImage})` }}
+      >
+        <div className="overlay" style={{ zIndex: 0 }}></div>
+        <Row style={{ zIndex: 1 }}>
+          <Col>
+            <span>MY ORDERS</span>
+          </Col>
+        </Row>
+      </div>
+
       {isLoading ? (
         <Loader />
       ) : orders.length > 0 ? (
@@ -20,7 +32,7 @@ const MyOrdersPage = () => {
                 <Accordion.Header>
                   <Row>
                     <b>Order Number</b>
-                    <b>Payment</b>
+                    <b>Payment Status</b>
                     <b>Order Status</b>
                     <b>Create Date</b>
                   </Row>
