@@ -3,7 +3,7 @@ import { useGetMyOrdersQuery } from "../../slices/ordersApiSlice";
 import { Accordion, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import OrderDetail from "../../components/OrderDetail/OrderDetail";
-import backgroundImage from "/images/dog-page.jpeg";
+import backgroundImage from "/images/all-product-page.webp";
 
 const MyOrdersPage = () => {
   const { data: orders, isLoading } = useGetMyOrdersQuery();

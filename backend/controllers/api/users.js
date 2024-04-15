@@ -91,94 +91,94 @@ async function getUserProfile(req, res) {
 
 // update User profile
 // PUT /api/users/profile
-async function updateUserProfile(req, res) {
-  const user = await User.findById(req.user._id);
+// async function updateUserProfile(req, res) {
+//   const user = await User.findById(req.user._id);
 
-  if (user) {
-    user.name = req.body.name || user.name;
-    user.email = req.body.email || user.email;
+//   if (user) {
+//     user.name = req.body.name || user.name;
+//     user.email = req.body.email || user.email;
 
-    // password is harshed so have seperate block
-    if (req.body.password) {
-      user.password = req.body.password;
-    }
+//     // password is harshed so have seperate block
+//     if (req.body.password) {
+//       user.password = req.body.password;
+//     }
 
-    const updatedUser = await user.save();
+//     const updatedUser = await user.save();
 
-    res.json({
-      _id: updatedUser._id,
-      name: updatedUser.name,
-      email: updatedUser.email,
-      isAdmin: updatedUser.isAdmin,
-    });
-  } else {
-    res.status(404);
-    throw new Error("User not found");
-  }
-}
+//     res.json({
+//       _id: updatedUser._id,
+//       name: updatedUser.name,
+//       email: updatedUser.email,
+//       isAdmin: updatedUser.isAdmin,
+//     });
+//   } else {
+//     res.status(404);
+//     throw new Error("User not found");
+//   }
+// }
 
-// Admin----------------------
-//Get all users
-//GET /api/users
-async function getUsers(req, res) {
-  const users = await User.find({});
-  res.json(users);
-}
+// // Admin----------------------
+// //Get all users
+// //GET /api/users
+// async function getUsers(req, res) {
+//   const users = await User.find({});
+//   res.json(users);
+// }
 
-//Delete user
-//DELETE /api/users/:id
-async function deleteUser(req, res) {
-  const user = await User.findById(req.params.id);
+// //Delete user
+// //DELETE /api/users/:id
+// async function deleteUser(req, res) {
+//   const user = await User.findById(req.params.id);
 
-  if (user) {
-    if (user.isAdmin) {
-      res.status(400);
-      throw new Error("Can not delete admin user");
-    }
-    await User.deleteOne({ _id: user._id });
-    res.json({ message: "User removed" });
-  } else {
-    res.status(404);
-    throw new Error("User not found");
-  }
-}
+//   if (user) {
+//     if (user.isAdmin) {
+//       res.status(400);
+//       throw new Error("Can not delete admin user");
+//     }
+//     await User.deleteOne({ _id: user._id });
+//     res.json({ message: "User removed" });
+//   } else {
+//     res.status(404);
+//     throw new Error("User not found");
+//   }
+// }
 
-// Get user by ID
-// GET /api/users/:id
-async function getUserById(req, res) {
-  const user = await User.findById(req.params.id).select("-password");
+// // Get user by ID
+// // GET /api/users/:id
+// async function getUserById(req, res) {
+//   const user = await User.findById(req.params.id).select("-password");
 
-  if (user) {
-    res.json(user);
-  } else {
-    res.status(404);
-    throw new Error("User not found");
-  }
-}
+//   if (user) {
+//     res.json(user);
+//   } else {
+//     res.status(404);
+//     throw new Error("User not found");
+//   }
+// }
 
-//Update user
-//PUT /api/users/:id
-async function updateUser(req, res) {
-  const user = await User.findById(req.params.id);
+// //Update user
+// //PUT /api/users/:id
+// async function updateUser(req, res) {
+//   const user = await User.findById(req.params.id);
 
-  if (user) {
-    user.name = req.body.name || user.name;
-    user.email = req.body.email || user.email;
-    user.isAdmin = Boolean(req.body.isAdmin);
+//   if (user) {
+//     user.name = req.body.name || user.name;
+//     user.email = req.body.email || user.email;
+//     user.isAdmin = Boolean(req.body.isAdmin);
 
-    const updatedUser = await user.save();
+//     const updatedUser = await user.save();
 
-    res.json({
-      _id: updatedUser._id,
-      name: updatedUser.name,
-      email: updatedUser.email,
-      isAdmin: updatedUser.isAdmin,
-    });
-  } else {
-    res.status(404);
-    throw new Error("User not found");
-  }
-}
+//     res.json({
+//       _id: updatedUser._id,
+//       name: updatedUser.name,
+//       email: updatedUser.email,
+//       isAdmin: updatedUser.isAdmin,
+//     });
+//   } else {
+//     res.status(404);
+//     throw new Error("User not found");
+//   }
+// }
 
 //helper function
 function generateToken(res, userId) {
@@ -206,10 +206,10 @@ module.exports = {
   logout,
   create,
   getUserProfile,
-  updateUserProfile,
-  getUsers,
-  deleteUser,
-  updateUser,
-  getUserById,
+  // updateUserProfile,
+  // getUsers,
+  // deleteUser,
+  // updateUser,
+  // getUserById,
   checkToken,
 };

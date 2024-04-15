@@ -18,6 +18,8 @@ import PrivateRoute from "../../components/PrivateRoute.jsx";
 import PlaceOrderPage from "../PlaceOrderPage/PlaceOrderPage.jsx";
 import ProcessPaymentPage from "../ProcessPaymentPage/ProcessPaymentPage.jsx";
 import MyOrdersPage from "../MyOrdersPage/MyOrdersPage.jsx";
+import Admin from "../../components/Admin.jsx";
+import OrderListPage from "../OrderListsPage/OrderListPage.jsx";
 
 function App() {
   return (
@@ -45,6 +47,10 @@ function App() {
               <Route path="/checkout" element={<CheckoutPage />} />
               <Route path="/placeorder" element={<PlaceOrderPage />} />
               <Route path="/myorders" element={<MyOrdersPage />} />
+            </Route>
+
+            <Route path="" element={<Admin />}>
+              <Route path="/admin/orderlist" element={<OrderListPage />} />
             </Route>
           </Routes>
         </Container>
