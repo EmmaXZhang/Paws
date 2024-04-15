@@ -1,5 +1,5 @@
 import { useGetProductsQuery } from "../../slices/productsApiSlice";
-import { Table, Button } from "react-bootstrap";
+import { Table, Button, Row, Col } from "react-bootstrap";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import Loader from "../../components/Loader/Loader";
@@ -14,8 +14,19 @@ const ProductListPage = () => {
         <Loader />
       ) : (
         <>
+          <div
+            className="background-image d-flex justify-content-center align-items-center"
+            style={{ backgroundColor: "RGB(58, 58, 62)", height: "150px" }}
+          >
+            <div className="overlay" style={{ zIndex: 0 }}></div>
+            <Row style={{ zIndex: 1 }}>
+              <Col>
+                <span style={{ fontSize: "36px" }}>Product List</span>
+              </Col>
+            </Row>
+          </div>
           {products && products.length > 0 ? (
-            <Table striped bordered hover responsive className="table-sm">
+            <Table striped bordered hover responsive className="table-sm mt-5">
               <thead>
                 <tr>
                   <th>ID</th>

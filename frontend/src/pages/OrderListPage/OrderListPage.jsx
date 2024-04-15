@@ -1,5 +1,5 @@
 import { useGetOrdersQuery } from "../../slices/ordersApiSlice";
-import { Table, Button } from "react-bootstrap";
+import { Table, Button, Row, Col } from "react-bootstrap";
 import { FaTimes } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import Loader from "../../components/Loader/Loader";
@@ -9,10 +9,21 @@ const OrderListPage = () => {
 
   return (
     <>
+      <div
+        className="background-image d-flex justify-content-center align-items-center"
+        style={{ backgroundColor: "RGB(58, 58, 62)", height: "150px" }}
+      >
+        <div className="overlay" style={{ zIndex: 0 }}></div>
+        <Row style={{ zIndex: 1 }}>
+          <Col>
+            <span style={{ fontSize: "36px" }}>Order List</span>
+          </Col>
+        </Row>
+      </div>
       {isLoading ? (
         <Loader />
       ) : (
-        <Table striped bordered hover responsive className="table-sm">
+        <Table striped bordered hover responsive className="table-sm mt-5">
           <thead>
             <tr>
               <th>ID</th>

@@ -1,0 +1,38 @@
+.cartitems h1 {
+  font-family: "Playfair Display", serif;
+  font-size: 50px;
+}
+
+.cartitems span {
+  font-size: 30px;
+}
+
+.cartitems {
+  background-color: RGB(249, 243, 241);
+}
+
+.cartitems .list-group-item {
+  background-color: RGB(249, 243, 241);
+}
+
+.subtotalCard {
+  background-color: RGB(249, 243, 241);
+  border: none;
+  margin-top: 3px;
+}
+
+.subtotalCard h2 {
+  font-family: "Playfair Display", serif;
+  font-size: 25px;
+}
+
+.subtotalCard span {
+  font-family: "Playfair Display", serif;
+}
+
+.custom-button {
+  background-color: RGB(58, 58, 62);
+  border: RGB(58, 58, 62);
+  size: 50%;
+  font-family: "Playfair Display", serif;
+}
