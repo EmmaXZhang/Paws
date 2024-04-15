@@ -6,6 +6,8 @@ import paymentImg from "/images/payment.png";
 import OrderDetail from "../../components/OrderDetail/OrderDetail";
 import img from "/images/processPayment.jpeg";
 import "./ProcessPaymentPage.css";
+import { Link } from "react-router-dom";
+import backgroundImage from "/images/all-product-page.webp";
 
 const ProcessPaymentPage = () => {
   const { id } = useParams();
@@ -16,8 +18,21 @@ const ProcessPaymentPage = () => {
     <Loader />
   ) : (
     <div>
+      <div
+        className="background-image d-flex justify-content-center align-items-center"
+        style={{ backgroundImage: `url(${backgroundImage})` }}
+      >
+        <div className="overlay" style={{ zIndex: 0 }}></div>
+        <Row style={{ zIndex: 1 }}>
+          <Col>
+            <span>Payment</span>
+          </Col>
+        </Row>
+      </div>
+
       <Row>
-        <Col md={6}>
+        <Col md={7} className="ProceedPayment">
+          <h2>Profile</h2>
           <Card style={{ border: "none", backgroundColor: "RGB(249, 243, 241)" }}>
             <Card.Body>
               <div className="d-flex justify-content-between">
@@ -50,13 +65,18 @@ const ProcessPaymentPage = () => {
               </div>
             </Card.Body>
           </Card>
-          <div className="processPayment mt-5">
+          <h2 className="mt-5">Order Details</h2>
+          <div className="processPayment">
             <OrderDetail order={order} />
           </div>
         </Col>
 
-        <Col md={6}>
-          <Image src={paymentImg} />
+        <Col md={5}>
+          <Image src={paymentImg} className="proceedpayment-img" />
+
+          <Link className="payment-btn btn btn-light my-3" to="/myorders">
+            Finish
+          </Link>
         </Col>
       </Row>
     </div>

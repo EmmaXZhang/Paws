@@ -1,5 +1,17 @@
 .processPayment .list-group-item {
   background-color: RGB(249, 243, 241);
-  padding-top: 25px;
-  padding-bottom: 25px;
+  padding: 45px 40px 45px 40px;
+}
+
+.ProceedPayment h2 {
+  font-family: "Playfair Display", serif;
+  margin-top: 20px;
+}
+
+.proceedpayment-img {
+  width: 100%;
+}
+
+.payment-btn {
+  width: 100%;
 }

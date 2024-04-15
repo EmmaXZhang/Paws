@@ -29,7 +29,7 @@ const PlaceOrderPage = () => {
       //clear cart
       dispatch(clearCart());
 
-      navigate("/orders/myorders");
+      navigate("/myorders");
     } catch (error) {
       console.log(error);
     }
