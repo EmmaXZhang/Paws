@@ -1,8 +1,8 @@
 .productCategory .btn-check:checked + .btn,
-.btn.active,
-.btn.show,
-.btn:first-child:active,
-:not(.btn-check) + .btn:active {
+.productCategory .btn.active,
+.productCategory .btn.show,
+.productCategory .btn:first-child:active,
+.productCategory :not(.btn-check) + .btn:active {
   background-color: RGB(249, 243, 241);
   border-color: RGB(249, 243, 241);
   color: RGB(58, 58, 62);

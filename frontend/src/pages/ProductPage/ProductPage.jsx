@@ -7,15 +7,7 @@ import Message from "../../components/Message";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../slices/cartSlice";
-import {
-  Form,
-  Row,
-  Col,
-  Image,
-  ListGroup,
-  Card,
-  Button,
-} from "react-bootstrap";
+import { Form, Row, Col, Image, ListGroup, Card, Button } from "react-bootstrap";
 
 export default function ProductPage() {
   // match route endpoint
@@ -57,9 +49,7 @@ export default function ProductPage() {
 
                   <strong>${product.price}</strong>
                   <ListGroup horizontal>
-                    <ListGroup.Item>
-                      {product.countInStock > 0 ? "In Stock" : "Out Of Stock"}
-                    </ListGroup.Item>
+                    <ListGroup.Item>{product.countInStock > 0 ? "In Stock" : "Out Of Stock"}</ListGroup.Item>
                     <ListGroup.Item>FREE 60 DAY RETURNS</ListGroup.Item>
                   </ListGroup>
 
@@ -70,18 +60,14 @@ export default function ProductPage() {
                           <Form.Control
                             as="select"
                             value={quantity}
-                            onChange={(e) =>
-                              setQuantity(Number(e.target.value))
-                            }
+                            onChange={(e) => setQuantity(Number(e.target.value))}
                           >
                             {/* gives array of inStock-1, starting from 0 */}
-                            {[...Array(product.countInStock).keys()].map(
-                              (num) => (
-                                <option key={num + 1} value={num + 1}>
-                                  {num + 1}
-                                </option>
-                              )
-                            )}
+                            {[...Array(product.countInStock).keys()].map((num) => (
+                              <option key={num + 1} value={num + 1}>
+                                {num + 1}
+                              </option>
+                            ))}
                           </Form.Control>
                         </Col>
                         <Col>
@@ -106,15 +92,10 @@ export default function ProductPage() {
             <Col md={4}>
               <ListGroup variant="flush">
                 <ListGroup.Item>
-                  <Rating
-                    value={product.rating}
-                    text={`${product.numReviews} reviews`}
-                  />
+                  <Rating value={product.rating} text={`${product.numReviews} reviews`} />
                 </ListGroup.Item>
                 <ListGroup.Item>Price: ${product.price}</ListGroup.Item>
-                <ListGroup.Item>
-                  Description: {product.description}
-                </ListGroup.Item>
+                <ListGroup.Item>Description: {product.description}</ListGroup.Item>
               </ListGroup>
             </Col>
           </Row>

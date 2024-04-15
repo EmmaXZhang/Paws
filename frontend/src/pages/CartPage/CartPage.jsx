@@ -30,7 +30,7 @@ const CartPage = () => {
   }
 
   return (
-    <Row>
+    <Row className="CartPart">
       <Col md={4}>You Might Also Like</Col>
       <Col md={8} className="cartitems">
         <Row className="cartitems my-4 mx-4">
