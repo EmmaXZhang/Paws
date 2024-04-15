@@ -16,10 +16,10 @@ export const productsApiSlice = apiSlice.injectEndpoints({
     // GET products by category
     getProductsByCategory: builder.query({
       // Define query function with category parameter
-      query: (category) => ({
+      query: (petCategory) => ({
         url: PRODUCTS_URL,
         //giving query string
-        params: { category },
+        params: { petCategory },
       }),
       keepUnusedDataFor: 5,
     }),

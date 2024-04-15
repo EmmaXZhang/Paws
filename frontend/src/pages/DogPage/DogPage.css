@@ -1,0 +1,29 @@
+.productCategory .btn-check:checked + .btn,
+.btn.active,
+.btn.show,
+.btn:first-child:active,
+:not(.btn-check) + .btn:active {
+  background-color: RGB(249, 243, 241);
+  border-color: RGB(249, 243, 241);
+  color: RGB(58, 58, 62);
+  width: 20%;
+}
+
+.productCategory .btn:hover {
+  background-color: RGB(249, 243, 241);
+  border-color: RGB(249, 243, 241);
+  color: RGB(58, 58, 62);
+}
+
+.productCategory Button {
+  background-color: RGB(249, 243, 241);
+  border-color: RGB(249, 243, 241);
+  color: RGB(58, 58, 62);
+  width: 20%;
+}
+
+.productCategory .dropdown-menu {
+  background-color: RGB(249, 243, 241);
+  width: 20%;
+  color: RGB(58, 58, 62);
+}
