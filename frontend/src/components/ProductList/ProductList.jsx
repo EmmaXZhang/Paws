@@ -5,9 +5,14 @@ import { FaEdit, FaTrash } from "react-icons/fa";
 import { useState, useEffect } from "react";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
-import { useUpdateProductMutation, useGetProductDetailsQuery } from "../../slices/productsApiSlice";
+import {
+  useUpdateProductMutation,
+  useGetProductDetailsQuery,
+  useGetProductsQuery,
+} from "../../slices/productsApiSlice";
 import Loader from "../Loader/Loader";
 import { toast } from "react-toastify";
+import "./ProductList.css";
 
 const ProductList = ({ products }) => {
   const [show, setShow] = useState(false);
@@ -25,6 +30,8 @@ const ProductList = ({ products }) => {
 
   // get product detail on localstorage
   const { data: product, isLoading, refetch } = useGetProductDetailsQuery(productId);
+  const { refetch: refetchProducts } = useGetProductsQuery();
+
   // update product mutation
   const [updateProduct, { isLoading: isUpdating }] = useUpdateProductMutation();
 
@@ -32,6 +39,11 @@ const ProductList = ({ products }) => {
   function editProductHandler(productId) {
     setShow(true);
     setProductId(productId);
+  }
+
+  function closeEditForm() {
+    setShow(false);
+    refetchProducts();
   }
 
   // prefill the formdata
@@ -107,16 +119,16 @@ const ProductList = ({ products }) => {
         </tbody>
       </Table>
 
-      <Modal show={show} onHide={() => setShow(false)}>
-        <Modal.Header closeButton>
+      <Modal show={show} onHide={closeEditForm} size="lg">
+        <Modal.Header closeButton className="editForm">
           <Modal.Title>Edit Product</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
+        <Modal.Body className="editForm">
           {isLoading ? (
             <Loader />
           ) : (
             <Form onSubmit={saveChangeHandler}>
-              <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+              <Form.Group className="mb-3" controlId="name">
                 <Form.Label>Name</Form.Label>
                 <Form.Control
                   type="name"
@@ -126,7 +138,7 @@ const ProductList = ({ products }) => {
                   autoFocus
                 />
               </Form.Group>
-              <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+              <Form.Group className="mb-3" controlId="price">
                 <Form.Label>Price</Form.Label>
                 <Form.Control
                   type="price"
@@ -140,7 +152,7 @@ const ProductList = ({ products }) => {
                 <Form.Label>Image</Form.Label>
                 <Form.Control type="email" placeholder="name@example.com" autoFocus />
               </Form.Group> */}
-              <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+              <Form.Group className="mb-3" controlId="brand">
                 <Form.Label>Brand</Form.Label>
                 <Form.Control
                   placeholder="Enter brand"
@@ -149,7 +161,7 @@ const ProductList = ({ products }) => {
                   autoFocus
                 />
               </Form.Group>
-              <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+              <Form.Group className="mb-3" controlId="category">
                 <Form.Label>Category</Form.Label>
                 <Form.Control
                   type="category"
@@ -159,7 +171,7 @@ const ProductList = ({ products }) => {
                   autoFocus
                 />
               </Form.Group>
-              <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+              <Form.Group className="mb-3" controlId="petCategory">
                 <Form.Label>Pet Category</Form.Label>
                 <Form.Select value={petCategory} onChange={(e) => setPetCategory(e.target.value)}>
                   <option value="">Select Pet Category</option>
@@ -177,7 +189,7 @@ const ProductList = ({ products }) => {
                   autoFocus
                 />
               </Form.Group>
-              <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+              <Form.Group className="mb-3" controlId="countInStock">
                 <Form.Label>Description</Form.Label>
                 <Form.Control
                   as="textarea"

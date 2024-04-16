@@ -1,7 +1,6 @@
 import { useGetProductsQuery } from "../../slices/productsApiSlice";
 import { Button, Row, Col } from "react-bootstrap";
 import { FaPlus } from "react-icons/fa";
-
 import Loader from "../../components/Loader/Loader";
 import Message from "../../components/Message";
 import ProductList from "../../components/ProductList/ProductList";
