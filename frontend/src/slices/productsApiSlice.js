@@ -11,6 +11,7 @@ export const productsApiSlice = apiSlice.injectEndpoints({
       }),
       // Store unused data for 5 second
       keepUnusedDataFor: 5,
+      provideTags: ["Product"],
     }),
 
     // GET products by category
@@ -21,6 +22,7 @@ export const productsApiSlice = apiSlice.injectEndpoints({
         //giving query string
         params: { petCategory },
       }),
+      provideTags: ["Product"],
       keepUnusedDataFor: 5,
     }),
 
@@ -45,13 +47,15 @@ export const productsApiSlice = apiSlice.injectEndpoints({
         method: "POST",
       }),
       //ensure that any cached data associated with tags is refreshed or removed from the cache
+      // don't need to refresh page then can get up to date data
       invalidatesTags: ["Product"],
     }),
 
     // UPDATE product
     updateProduct: builder.mutation({
       query: (product) => ({
-        url: `/api/products/${product._id}`,
+        // productId coming from productId passed from frontend page
+        url: `/api/products/${product.productId}`,
         method: "PUT",
         body: product,
       }),

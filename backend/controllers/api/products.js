@@ -67,7 +67,7 @@ async function update(req, res) {
       product.petCategory = petCategory;
       product.countInStock = countInStock;
 
-      const updateProduct = await Product.save();
+      const updateProduct = await product.save();
       res.json(updateProduct);
     } else {
       res.status(404);

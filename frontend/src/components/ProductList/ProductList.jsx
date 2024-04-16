@@ -7,6 +7,7 @@ import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import { useUpdateProductMutation, useGetProductDetailsQuery } from "../../slices/productsApiSlice";
 import Loader from "../Loader/Loader";
+import { toast } from "react-toastify";
 
 const ProductList = ({ products }) => {
   const [show, setShow] = useState(false);
@@ -14,12 +15,12 @@ const ProductList = ({ products }) => {
 
   // fields need to be updated
   const [name, setName] = useState("");
-  const [price, setPrice] = useState(0);
+  const [price, setPrice] = useState("");
   const [image, setImage] = useState("");
   const [brand, setBrand] = useState("");
   const [category, setCategory] = useState("");
   const [petCategory, setPetCategory] = useState("");
-  const [countInStock, setCountInStock] = useState(0);
+  const [countInStock, setCountInStock] = useState("");
   const [description, setDescription] = useState("");
 
   // get product detail on localstorage
@@ -48,7 +49,27 @@ const ProductList = ({ products }) => {
   }, [product]);
 
   // save changes
-  function saveChangeHandler() {}
+  async function saveChangeHandler(e) {
+    e.preventDefault();
+
+    try {
+      await updateProduct({
+        productId,
+        name,
+        price,
+        image,
+        brand,
+        category,
+        petCategory,
+        description,
+        countInStock,
+      }).unwrap();
+      toast.success("Product updated");
+      refetch();
+    } catch (error) {
+      toast.error(error?.data?.message || error.error);
+    }
+  }
 
   return (
     <>
@@ -94,7 +115,7 @@ const ProductList = ({ products }) => {
           {isLoading ? (
             <Loader />
           ) : (
-            <Form>
+            <Form onSubmit={saveChangeHandler}>
               <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                 <Form.Label>Name</Form.Label>
                 <Form.Control
@@ -166,13 +187,13 @@ const ProductList = ({ products }) => {
                   autoFocus
                 />
               </Form.Group>
-              <Button variant="primary" onClick={saveChangeHandler}>
+              <Button variant="primary" type="submit">
                 Save Changes
               </Button>
             </Form>
           )}
         </Modal.Body>
-        <Modal.Footer>{isUpdating && <Loader />}</Modal.Footer>
+        <Modal.Footer> {isUpdating && <Loader />}</Modal.Footer>
       </Modal>
     </>
   );
