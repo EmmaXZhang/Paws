@@ -42,7 +42,7 @@ async function newProduct(req, res) {
       petCategory: "dog",
       description: "sample descriptin",
       price: 0,
-      countInStock: 1,
+      countInStock: 0,
     });
 
     const createdProduct = await product.save();
