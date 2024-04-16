@@ -33,16 +33,17 @@ async function show(req, res) {
 // create a product
 async function newProduct(req, res) {
   try {
+    const { name, price, description, image, brand, category, petCategory, countInStock } = req.body;
     const product = new Product({
       user: req.user._id,
-      name: "Sample name",
-      image: "/images/sampleproduct.webp",
-      brand: "sample brand",
-      category: "sample category",
-      petCategory: "dog",
-      description: "sample descriptin",
-      price: 0,
-      countInStock: 0,
+      name: name,
+      image: image,
+      brand: brand,
+      category: category,
+      petCategory: petCategory,
+      description: description,
+      price: price,
+      countInStock: countInStock,
     });
 
     const createdProduct = await product.save();
