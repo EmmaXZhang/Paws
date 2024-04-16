@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-import { Table, Button } from "react-bootstrap";
+import { Table, Button, Row } from "react-bootstrap";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import { useState, useEffect } from "react";
 import Form from "react-bootstrap/Form";
@@ -199,9 +199,9 @@ const ProductList = ({ products }) => {
                   autoFocus
                 />
               </Form.Group>
-              <Button variant="primary" type="submit">
-                Save Changes
-              </Button>
+              <div className="d-flex justify-content-center mt-4">
+                <Button type="submit">Save Changes</Button>
+              </div>
             </Form>
           )}
         </Modal.Body>

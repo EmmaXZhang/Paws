@@ -6,3 +6,9 @@
   background-color: RGB(45, 123, 108);
   border: RGB(45, 123, 108);
 }
+
+.editForm Button:hover {
+  background-color: RGB(45, 123, 108);
+  border: RGB(45, 123, 108);
+  scale: 1.1;
+}
