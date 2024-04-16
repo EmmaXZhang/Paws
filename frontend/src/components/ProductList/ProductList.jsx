@@ -49,14 +49,14 @@ const ProductList = ({ products }) => {
   // prefill the formdata
   useEffect(() => {
     if (product) {
-      setName(product.name);
-      setPrice(product.price);
-      setImage(product.image);
-      setBrand(product.brand);
-      setCategory(product.category);
-      setPetCategory(product.petCategory);
-      setCountInStock(product.countInStock);
-      setDescription(product.description);
+      setName(product.name || "");
+      setPrice(product.price || "");
+      setImage(product.image || "");
+      setBrand(product.brand || "");
+      setCategory(product.category || "");
+      setPetCategory(product.petCategory || "");
+      setCountInStock(product.countInStock || "");
+      setDescription(product.description || "");
     }
   }, [product]);
 
