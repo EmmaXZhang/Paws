@@ -30,7 +30,30 @@ async function show(req, res) {
   }
 }
 
+// create a product
+async function newProduct(req, res) {
+  try {
+    const product = new Product({
+      user: req.user._id,
+      name: "Sample name",
+      image: "/images/sampleproduct.webp",
+      brand: "sample brand",
+      category: "sample category",
+      petCategory: "dog",
+      description: "sample descriptin",
+      price: 0,
+      countInStock: 1,
+    });
+
+    const createdProduct = await product.save();
+    res.status(201).json(createdProduct);
+  } catch (error) {
+    console.log("create new product", error);
+  }
+}
+
 module.exports = {
   index,
   show,
+  new: newProduct,
 };

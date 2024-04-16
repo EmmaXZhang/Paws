@@ -1,6 +1,6 @@
 import { useGetProductsQuery } from "../../slices/productsApiSlice";
 import { Table, Button, Row, Col } from "react-bootstrap";
-import { FaEdit, FaTrash } from "react-icons/fa";
+import { FaEdit, FaTrash, FaPlus } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import Loader from "../../components/Loader/Loader";
 import Message from "../../components/Message";
@@ -51,7 +51,7 @@ const ProductListPage = () => {
                           <FaEdit />
                         </Button>
                       </Link>
-                      <Button variant="danger" className="btn-sm" onClick={() => deleteHandler(product._id)}>
+                      <Button variant="danger" className="btn-sm">
                         <FaTrash style={{ color: "white" }} />
                       </Button>
                     </td>
@@ -62,6 +62,9 @@ const ProductListPage = () => {
           ) : (
             <Message>No products found.</Message>
           )}
+          <Button className="my-3" variant="dark">
+            <FaPlus /> Create Product
+          </Button>
         </>
       )}
     </>

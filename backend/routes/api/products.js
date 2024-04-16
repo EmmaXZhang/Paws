@@ -1,9 +1,10 @@
 const express = require("express");
 const router = express.Router();
 const productsCtrl = require("../../controllers/api/products");
+const { protect, admin } = require("../../config/authorization");
 
-// POST /api/productss/new
-// router.post("/new", upload.single("image"), productsCtrl.create);
+// POST /api/products/new
+router.post("/new", protect, admin, productsCtrl.new);
 
 // GET /api/products
 router.get("/", productsCtrl.index);
