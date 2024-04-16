@@ -47,6 +47,16 @@ export const productsApiSlice = apiSlice.injectEndpoints({
       //ensure that any cached data associated with tags is refreshed or removed from the cache
       invalidatesTags: ["Product"],
     }),
+
+    // UPDATE product
+    updateProduct: builder.mutation({
+      query: (product) => ({
+        url: `/api/products/${product._id}`,
+        method: "PUT",
+        body: product,
+      }),
+      invalidatesTags: ["Product"],
+    }),
   }),
 });
 
@@ -55,4 +65,5 @@ export const {
   useGetProductsByCategoryQuery,
   useGetProductDetailsQuery,
   useCreateProductMutation,
+  useUpdateProductMutation,
 } = productsApiSlice;

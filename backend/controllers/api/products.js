@@ -52,8 +52,35 @@ async function newProduct(req, res) {
   }
 }
 
+// update a product
+async function update(req, res) {
+  try {
+    const product = await Product.findById(req.params.id);
+    const { name, price, description, image, brand, category, petCategory, countInStock } = req.body;
+    if (product) {
+      product.name = name;
+      product.price = price;
+      product.description = description;
+      product.image = image;
+      product.brand = brand;
+      product.category = category;
+      product.petCategory = petCategory;
+      product.countInStock = countInStock;
+
+      const updateProduct = await Product.save();
+      res.json(updateProduct);
+    } else {
+      res.status(404);
+      throw new Error("Product not found");
+    }
+  } catch (error) {
+    console.log("display a product", error);
+  }
+}
+
 module.exports = {
   index,
   show,
   new: newProduct,
+  update,
 };

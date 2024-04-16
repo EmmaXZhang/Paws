@@ -15,7 +15,7 @@ router.get("/", productsCtrl.index);
 // GET /api/products/:id
 router.get("/:id", productsCtrl.show);
 
-// // PUT /api/products/:id/edit
-// router.put("/:id", productsCtrl.update);
+// // PUT /api/products/:id/
+router.put("/:id", protect, admin, productsCtrl.update);
 
 module.exports = router;
