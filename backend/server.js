@@ -21,6 +21,8 @@ app.use("/api/products", require("./routes/api/products"));
 
 app.use("/api/orders", require("./routes/api/orders"));
 
+app.use("/api/upload", require("./routes/api/uploadImages"));
+
 //any URL/paths which is not exist, by sending the React index.html page (homepage)
 app.get("/*", function (req, res) {
   res.sendFile(path.join(__dirname, "dist", "index.html"));

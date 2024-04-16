@@ -16,7 +16,7 @@ const PlaceOrderPage = () => {
 
   async function placeOrderHandler() {
     try {
-      const res = await createOrder({
+      await createOrder({
         orderItems: cart.cartItems,
         shippingAddress: cart.shippingAddress,
         paymentMethod: cart.payment,

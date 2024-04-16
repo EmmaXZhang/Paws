@@ -37,11 +37,13 @@ export const productsApiSlice = apiSlice.injectEndpoints({
 
     // CREAT product
     createProduct: builder.mutation({
-      query: (product) => ({
-        url: `/api/products/new`,
-        method: "POST",
-        body: { ...product },
-      }),
+      query(product) {
+        return {
+          url: `/api/products/new`,
+          method: "POST",
+          body: { ...product },
+        };
+      },
       //ensure that any cached data associated with tags is refreshed or removed from the cache
       // don't need to refresh page then can get up to date data
       invalidatesTags: ["Product"],
@@ -57,6 +59,14 @@ export const productsApiSlice = apiSlice.injectEndpoints({
       }),
       invalidatesTags: ["Product"],
     }),
+
+    uploadProductImage: builder.mutation({
+      query: (data) => ({
+        url: `/api/upload`,
+        method: "POST",
+        body: data,
+      }),
+    }),
   }),
 });
 
@@ -66,4 +76,5 @@ export const {
   useGetProductDetailsQuery,
   useCreateProductMutation,
   useUpdateProductMutation,
+  useUploadProductImageMutation,
 } = productsApiSlice;

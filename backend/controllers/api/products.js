@@ -33,11 +33,19 @@ async function show(req, res) {
 // create a product
 async function newProduct(req, res) {
   try {
-    const { name, price, description, image, brand, category, petCategory, countInStock } = req.body;
+    const { name, price, image, description, brand, category, petCategory, countInStock, cloudinaryId } = req.body;
+
+    console.log("request", req.body);
+
+    if (!name || !price || !image || !description || !brand || !category || !petCategory || !countInStock) {
+      return res.status(400).json({ message: "Required fields are missing." });
+    }
+
     const product = new Product({
       user: req.user._id,
       name: name,
       image: image,
+      cloudinary_id: cloudinaryId,
       brand: brand,
       category: category,
       petCategory: petCategory,

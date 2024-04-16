@@ -10,38 +10,64 @@ import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import { useCreateProductMutation } from "../../slices/productsApiSlice";
 import { useState } from "react";
+import { useUploadProductImageMutation } from "../../slices/productsApiSlice";
 
 const ProductListPage = () => {
   const { data: products, isLoading, refetch } = useGetProductsQuery();
   const [show, setShow] = useState(false);
 
   const [createProduct, { isLoading: loadingCreate }] = useCreateProductMutation();
+  const [uploadProductImage, { isLoading: loadingUpload }] = useUploadProductImageMutation();
 
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
-  const [image, setImage] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
+  const [cloudinaryId, setCloudinaryId] = useState("");
   const [brand, setBrand] = useState("");
   const [category, setCategory] = useState("");
   const [petCategory, setPetCategory] = useState("");
   const [countInStock, setCountInStock] = useState("");
   const [description, setDescription] = useState("");
 
-  async function createProductHandler() {
+  const uploadFileHandler = async (e) => {
+    const formData = new FormData();
+    formData.append("image", e.target.files[0]);
     try {
-      const res = await createProduct({
+      const res = await uploadProductImage(formData).unwrap();
+      toast.success(res.message);
+      setImageUrl(res.secure_url);
+      setCloudinaryId(res.public_id);
+
+      // Reset the file input value to allow re-uploading of the same file
+      // e.target.value = null;
+    } catch (err) {
+      toast.error(err?.data?.message || err.error);
+    }
+  };
+
+  async function createProductHandler(event) {
+    event.preventDefault();
+
+    try {
+      // now the product has the imageUrl
+      const product = {
         name,
         price,
-        image,
+        image: imageUrl,
+        cloudinaryId,
         brand,
         category,
         petCategory,
         countInStock,
         description,
-      }).unwrap();
-      refetch();
-    } catch (error) {
-      toast.error(error.error);
+      };
+      const res = await createProduct(product).unwrap();
+      toast.success("Product created successfully");
+      setShow(false);
+    } catch (err) {
+      toast.error(err?.data?.message || err.error);
     }
+    refetch();
   }
 
   return (
@@ -100,10 +126,11 @@ const ProductListPage = () => {
                       autoFocus
                     />
                   </Form.Group>
-                  <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                  <Form.Group className="mb-3" controlId="image">
                     <Form.Label>Image</Form.Label>
-                    <Form.Control type="file" value={image} onChange={(e) => setImage(e.target.files[0])} autoFocus />
+                    <Form.Control type="file" onChange={uploadFileHandler} accept="image/*" autoFocus />
                   </Form.Group>
+                  {loadingUpload && <Loader />}
                   <Form.Group className="mb-3" controlId="brand">
                     <Form.Label>Brand</Form.Label>
                     <Form.Control
