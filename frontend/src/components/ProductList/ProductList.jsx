@@ -95,14 +95,21 @@ const ProductList = ({ products }) => {
       }).unwrap();
       toast.success("Product updated");
       setShow(false);
-      refetch();
+      refetchProducts();
     } catch (error) {
       toast.error(error?.data?.message || error.error);
     }
   }
 
-  async function deleteProductHandler() {
-    await deleteProduct(productId).unwrap();
+  async function deleteProductHandler(productId) {
+    if (window.confirm("Are you sure ?")) {
+      try {
+        await deleteProduct(productId);
+        refetchProducts();
+      } catch (error) {
+        toast.error(error?.data?.message || error.error);
+      }
+    }
   }
 
   return (
@@ -131,11 +138,10 @@ const ProductList = ({ products }) => {
               <td>{product.category}</td>
               <td>{product.brand}</td>
               <td>
-                {/* <Link to={`/admin/products/${product._id}/edit`}> */}
                 <Button variant="light" className="btn-sm mx-2" onClick={() => editProductHandler(product._id)}>
                   <FaEdit />
                 </Button>
-                {/* </Link> */}
+
                 <Button variant="danger" className="btn-sm" onClick={() => deleteProductHandler(product._id)}>
                   <FaTrash style={{ color: "white" }} />
                 </Button>
@@ -143,6 +149,7 @@ const ProductList = ({ products }) => {
             </tr>
           ))}
         </tbody>
+        {isDeleting && <Loader />}
       </Table>
 
       {/* product edit form */}

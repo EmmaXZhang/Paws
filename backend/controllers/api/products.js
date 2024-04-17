@@ -90,10 +90,11 @@ async function update(req, res) {
 // delete a product
 async function deleteProduct(req, res) {
   try {
+    console.log(req.params.id);
     const product = await Product.findById(req.params.id);
 
     if (product) {
-      const updateProduct = await Product.delete({ _id: product._id });
+      await Product.deleteOne({ _id: product._id });
       res.status(200).json({ message: "product deleted" });
     } else {
       res.status(404);
