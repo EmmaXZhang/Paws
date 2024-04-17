@@ -1,0 +1,12 @@
+.myorders b {
+  margin-bottom: 8px;
+}
+
+.myorders span {
+  margin-bottom: 8px;
+}
+
+.myorders a {
+  margin-bottom: 8px;
+  color: RGB(45, 123, 108);
+}

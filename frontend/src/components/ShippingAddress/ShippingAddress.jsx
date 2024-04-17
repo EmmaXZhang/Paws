@@ -41,9 +41,11 @@ const ShippingAddress = ({
         <Form.Control placeholder="Enter Country" value={country} onChange={(e) => setCountry(e.target.value)} />
       </Form.Group>
 
-      <Button className="mb-3" variant="primary" type="submit">
-        Save
-      </Button>
+      <Col className="d-flex justify-content-end">
+        <Button className="mb-3" variant="primary" type="submit">
+          Save
+        </Button>
+      </Col>
     </Form>
   );
 };

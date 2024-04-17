@@ -4,6 +4,7 @@ import { Accordion, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import OrderDetail from "../../components/OrderDetail/OrderDetail";
 import backgroundImage from "/images/all-product-page.webp";
+import "./MyOrdersPage.css";
 
 const MyOrdersPage = () => {
   const { data: orders, isLoading } = useGetMyOrdersQuery();
@@ -29,7 +30,7 @@ const MyOrdersPage = () => {
           <Accordion defaultActiveKey="0">
             {orders.map((order, index) => (
               <Accordion.Item eventKey={index} key={index}>
-                <Accordion.Header>
+                <Accordion.Header className="myorders">
                   <Row>
                     <b>Order Number</b>
                     <b>Payment Status</b>

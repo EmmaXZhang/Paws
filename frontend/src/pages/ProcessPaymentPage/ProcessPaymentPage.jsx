@@ -74,7 +74,7 @@ const ProcessPaymentPage = () => {
         <Col md={5}>
           <Image src={paymentImg} className="proceedpayment-img" />
 
-          <Link className="payment-btn btn btn-light my-3" to="/myorders">
+          <Link className="payment-btn btn btn-light my-3 bold" to="/myorders">
             Finish
           </Link>
         </Col>

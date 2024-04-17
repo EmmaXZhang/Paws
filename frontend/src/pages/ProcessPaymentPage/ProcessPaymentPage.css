@@ -6,6 +6,7 @@
 .ProceedPayment h2 {
   font-family: "Playfair Display", serif;
   margin-top: 20px;
+  color: RGB(152, 75, 44);
 }
 
 .proceedpayment-img {
@@ -14,4 +15,7 @@
 
 .payment-btn {
   width: 100%;
+  font-size: large;
+  font-weight: bold;
+  background-color: lightgrey;
 }
