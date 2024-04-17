@@ -9,13 +9,13 @@ router.post("/new", protect, admin, productsCtrl.new);
 // GET /api/products
 router.get("/", productsCtrl.index);
 
-// // DELETE /api/products/:id
-// router.delete("/:id", productsCtrl.delete);
+// DELETE /api/products/:id
+router.delete("/:id", protect, admin, productsCtrl.delete);
 
 // GET /api/products/:id
 router.get("/:id", productsCtrl.show);
 
-// // PUT /api/products/:id/
+// PUT /api/products/:id/
 router.put("/:id", protect, admin, productsCtrl.update);
 
 module.exports = router;

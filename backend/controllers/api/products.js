@@ -83,7 +83,24 @@ async function update(req, res) {
       throw new Error("Product not found");
     }
   } catch (error) {
-    console.log("display a product", error);
+    console.log("update a product", error);
+  }
+}
+
+// delete a product
+async function deleteProduct(req, res) {
+  try {
+    const product = await Product.findById(req.params.id);
+
+    if (product) {
+      const updateProduct = await Product.delete({ _id: product._id });
+      res.status(200).json({ message: "product deleted" });
+    } else {
+      res.status(404);
+      throw new Error("Product not found");
+    }
+  } catch (error) {
+    console.log("delete a product", error);
   }
 }
 
@@ -92,4 +109,5 @@ module.exports = {
   show,
   new: newProduct,
   update,
+  delete: deleteProduct,
 };

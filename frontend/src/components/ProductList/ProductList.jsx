@@ -10,6 +10,7 @@ import {
   useUpdateProductMutation,
   useGetProductDetailsQuery,
   useGetProductsQuery,
+  useDeleteProductMutation,
 } from "../../slices/productsApiSlice";
 import Loader from "../Loader/Loader";
 import { toast } from "react-toastify";
@@ -37,6 +38,7 @@ const ProductList = ({ products }) => {
   // update product mutation
   const [updateProduct, { isLoading: isUpdating }] = useUpdateProductMutation();
   const [uploadProductImage, { isLoading: loadingUpload }] = useUploadProductImageMutation();
+  const [deleteProduct, { isLoading: isDeleting }] = useDeleteProductMutation();
 
   // show Modal and get productId
   function editProductHandler(productId) {
@@ -99,6 +101,10 @@ const ProductList = ({ products }) => {
     }
   }
 
+  async function deleteProductHandler() {
+    await deleteProduct(productId).unwrap();
+  }
+
   return (
     <>
       <Table striped bordered hover responsive className="table-sm mt-5">
@@ -130,7 +136,7 @@ const ProductList = ({ products }) => {
                   <FaEdit />
                 </Button>
                 {/* </Link> */}
-                <Button variant="danger" className="btn-sm">
+                <Button variant="danger" className="btn-sm" onClick={() => deleteProductHandler(product._id)}>
                   <FaTrash style={{ color: "white" }} />
                 </Button>
               </td>
