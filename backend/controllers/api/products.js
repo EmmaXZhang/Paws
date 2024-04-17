@@ -58,6 +58,7 @@ async function newProduct(req, res) {
     res.status(201).json(createdProduct);
   } catch (error) {
     console.log("create new product", error);
+    throw error;
   }
 }
 

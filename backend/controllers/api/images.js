@@ -12,7 +12,18 @@ async function upload(req, res) {
     res.json(imageUrl);
   } catch (error) {
     console.log("upload image", error);
+    throw error;
   }
 }
 
-module.exports = { upload };
+async function deleteImage(req, res) {
+  try {
+    await cloudinary.uploader.destroy(req.params.public_id);
+    res.status(200).json({ message: "Image deleted successfully" });
+  } catch (error) {
+    console.log("delete image", error);
+    throw error;
+  }
+}
+
+module.exports = { upload, delete: deleteImage };

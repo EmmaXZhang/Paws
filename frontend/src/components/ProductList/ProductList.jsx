@@ -16,6 +16,7 @@ import Loader from "../Loader/Loader";
 import { toast } from "react-toastify";
 import "./ProductList.css";
 import { useUploadProductImageMutation } from "../../slices/productsApiSlice";
+import { useDeleteProductImageMutation } from "../../slices/productsApiSlice";
 
 const ProductList = ({ products }) => {
   const [name, setName] = useState("");
@@ -39,6 +40,7 @@ const ProductList = ({ products }) => {
   const [updateProduct, { isLoading: isUpdating }] = useUpdateProductMutation();
   const [uploadProductImage, { isLoading: loadingUpload }] = useUploadProductImageMutation();
   const [deleteProduct, { isLoading: isDeleting }] = useDeleteProductMutation();
+  const [deleteImage] = useDeleteProductImageMutation();
 
   // show Modal and get productId
   function editProductHandler(productId) {
@@ -101,10 +103,12 @@ const ProductList = ({ products }) => {
     }
   }
 
-  async function deleteProductHandler(productId) {
+  async function deleteProductHandler(productId, productCloudinaryId) {
     if (window.confirm("Are you sure ?")) {
       try {
+        console.log("productCloudinaryId", productCloudinaryId);
         await deleteProduct(productId);
+        await deleteImage(productCloudinaryId);
         refetchProducts();
       } catch (error) {
         toast.error(error?.data?.message || error.error);
@@ -142,7 +146,11 @@ const ProductList = ({ products }) => {
                   <FaEdit />
                 </Button>
 
-                <Button variant="danger" className="btn-sm" onClick={() => deleteProductHandler(product._id)}>
+                <Button
+                  variant="danger"
+                  className="btn-sm"
+                  onClick={() => deleteProductHandler(product._id, product.cloudinary_id)}
+                >
                   <FaTrash style={{ color: "white" }} />
                 </Button>
               </td>
@@ -236,9 +244,9 @@ const ProductList = ({ products }) => {
                   autoFocus
                 />
               </Form.Group>
-              <div className="d-flex justify-content-center mt-4">
+              <p className="d-flex justify-content-center mt-4">
                 <Button type="submit">Save Changes</Button>
-              </div>
+              </p>
             </Form>
           )}
         </Modal.Body>

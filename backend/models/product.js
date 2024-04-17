@@ -32,6 +32,9 @@ const productSchema = new Schema(
       type: String,
       required: true,
     },
+    cloudinary_id: {
+      type: String,
+    },
     brand: {
       type: String,
       required: true,
