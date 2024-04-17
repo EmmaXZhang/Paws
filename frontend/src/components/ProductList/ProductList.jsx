@@ -89,6 +89,7 @@ const ProductList = ({ products }) => {
         <thead>
           <tr>
             <th>ID</th>
+            <th>IMAGE</th>
             <th>NAME</th>
             <th>PRICE</th>
             <th>CATEGORY</th>
@@ -100,6 +101,9 @@ const ProductList = ({ products }) => {
           {products.map((product) => (
             <tr key={product._id}>
               <td>{product._id}</td>
+              <td>
+                <img src={product.image} style={{ height: "60px" }} />
+              </td>
               <td>{product.name}</td>
               <td>${product.price}</td>
               <td>{product.category}</td>
