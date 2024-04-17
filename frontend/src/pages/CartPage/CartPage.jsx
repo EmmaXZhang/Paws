@@ -6,6 +6,7 @@ import Message from "../../components/Message";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, removeFromCart } from "../../slices/cartSlice";
 import "./CartPage.css";
+import ProductsYouMightLike from "../../components/ProductsYouMightLike/ProductsYouMightLike";
 
 const CartPage = () => {
   const navigate = useNavigate();
@@ -31,7 +32,10 @@ const CartPage = () => {
 
   return (
     <Row className="CartPart">
-      <Col md={4}>You Might Also Like</Col>
+      <Col md={4} className="cart-card">
+        <h2>You Might Also Like</h2>
+        <ProductsYouMightLike addToCartHandler={addToCartHandler} />
+      </Col>
       <Col md={8} className="cartitems">
         <Row className="cartitems my-4 mx-4">
           <h1 className="mb-4">

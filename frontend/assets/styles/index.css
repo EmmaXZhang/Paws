@@ -8,6 +8,16 @@ body {
   flex-grow: 1;
   flex-basis: 0;
 }
+
+a {
+  text-decoration: none;
+  color: RGB(58, 58, 62);
+}
+
+a:hover {
+  color: RGB(58, 58, 62);
+}
+
 main {
   min-height: 80vh;
 }

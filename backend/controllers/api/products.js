@@ -91,7 +91,6 @@ async function update(req, res) {
 // delete a product
 async function deleteProduct(req, res) {
   try {
-    console.log(req.params.id);
     const product = await Product.findById(req.params.id);
 
     if (product) {

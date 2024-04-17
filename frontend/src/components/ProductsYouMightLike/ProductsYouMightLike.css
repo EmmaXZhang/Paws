@@ -1,0 +1,20 @@
+.you-might-like-card {
+  padding: 0;
+  margin-left: 25px;
+}
+
+.you-might-like-card .card-text {
+  font-family: "Playfair Display", serif;
+}
+
+.you-might-like-card .card-title {
+  font-size: 20px;
+}
+
+.youlike-img {
+  margin-right: 30px;
+}
+
+.you-might-like-card Button {
+  font-size: 13px;
+}

@@ -36,3 +36,13 @@
   size: 50%;
   font-family: "Playfair Display", serif;
 }
+
+.custom-button:hover {
+  background-color: RGB(58, 58, 62);
+  scale: 1.1;
+}
+
+.cart-card h2 {
+  font-family: "Playfair Display", serif;
+  font-size: 30px;
+}
