@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import { Table, Button, Row } from "react-bootstrap";
@@ -13,20 +14,21 @@ import {
 import Loader from "../Loader/Loader";
 import { toast } from "react-toastify";
 import "./ProductList.css";
+import { useUploadProductImageMutation } from "../../slices/productsApiSlice";
 
 const ProductList = ({ products }) => {
-  const [show, setShow] = useState(false);
-  const [productId, setProductId] = useState("");
-
-  // fields need to be updated
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
-  const [image, setImage] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
+  const [cloudinaryId, setCloudinaryId] = useState("");
   const [brand, setBrand] = useState("");
   const [category, setCategory] = useState("");
   const [petCategory, setPetCategory] = useState("");
   const [countInStock, setCountInStock] = useState("");
   const [description, setDescription] = useState("");
+
+  const [show, setShow] = useState(false);
+  const [productId, setProductId] = useState("");
 
   // get product detail on localstorage
   const { data: product, isLoading, refetch } = useGetProductDetailsQuery(productId);
@@ -34,6 +36,7 @@ const ProductList = ({ products }) => {
 
   // update product mutation
   const [updateProduct, { isLoading: isUpdating }] = useUpdateProductMutation();
+  const [uploadProductImage, { isLoading: loadingUpload }] = useUploadProductImageMutation();
 
   // show Modal and get productId
   function editProductHandler(productId) {
@@ -51,7 +54,7 @@ const ProductList = ({ products }) => {
     if (product) {
       setName(product.name || "");
       setPrice(product.price || "");
-      setImage(product.image || "");
+      setImageUrl(product.image || "");
       setBrand(product.brand || "");
       setCategory(product.category || "");
       setPetCategory(product.petCategory || "");
@@ -60,16 +63,28 @@ const ProductList = ({ products }) => {
     }
   }, [product]);
 
+  const uploadFileHandler = async (e) => {
+    const formData = new FormData();
+    formData.append("image", e.target.files[0]);
+    try {
+      const res = await uploadProductImage(formData).unwrap();
+      toast.success(res.message);
+      setImageUrl(res.secure_url);
+      setCloudinaryId(res.public_id);
+    } catch (err) {
+      toast.error(err?.data?.message || err.error);
+    }
+  };
+
   // save changes
   async function saveChangeHandler(e) {
     e.preventDefault();
-
     try {
       await updateProduct({
         productId,
         name,
         price,
-        image,
+        image: imageUrl,
         brand,
         category,
         petCategory,
@@ -77,6 +92,7 @@ const ProductList = ({ products }) => {
         countInStock,
       }).unwrap();
       toast.success("Product updated");
+      setShow(false);
       refetch();
     } catch (error) {
       toast.error(error?.data?.message || error.error);
@@ -123,6 +139,7 @@ const ProductList = ({ products }) => {
         </tbody>
       </Table>
 
+      {/* product edit form */}
       <Modal show={show} onHide={closeEditForm} size="lg">
         <Modal.Header closeButton className="editForm">
           <Modal.Title>Edit Product</Modal.Title>
@@ -152,10 +169,13 @@ const ProductList = ({ products }) => {
                   autoFocus
                 />
               </Form.Group>
-              {/* <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+
+              <Form.Group className="mb-3" controlId="image">
                 <Form.Label>Image</Form.Label>
-                <Form.Control type="email" placeholder="name@example.com" autoFocus />
-              </Form.Group> */}
+                <Form.Control type="file" onChange={uploadFileHandler} accept="image/*" autoFocus />
+                {imageUrl && <img src={imageUrl} alt="Product" style={{ marginTop: "10px", maxHeight: "150px" }} />}
+              </Form.Group>
+
               <Form.Group className="mb-3" controlId="brand">
                 <Form.Label>Brand</Form.Label>
                 <Form.Control
