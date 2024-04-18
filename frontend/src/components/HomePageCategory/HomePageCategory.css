@@ -11,3 +11,7 @@
   background-color: RGB(249, 243, 241);
   border: none;
 }
+
+.category-card a {
+  font-family: "Playfair Display", serif;
+}
