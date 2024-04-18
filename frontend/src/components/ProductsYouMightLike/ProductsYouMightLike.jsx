@@ -4,7 +4,6 @@ import { Col } from "react-bootstrap";
 import Loader from "../../components/Loader/Loader";
 import Message from "../../components/Message";
 import { Button, Card } from "react-bootstrap";
-
 import { Link } from "react-router-dom";
 import "./ProductsYouMightLike.css";
 
@@ -19,14 +18,14 @@ const ProductsYouMightLike = ({ addToCartHandler }) => {
         <Message variant="danger">Error: {error.message}</Message>
       ) : (
         <>
-          {products.slice(0, 6).map((product) => (
-            <Col key={product._id} sm={10} md={10} lg={10} xl={10} className="mb-5">
-              <Card className="you-might-like-card">
+          {products.slice(0, 5).map((product) => (
+            <Col key={product._id} className="mb-5">
+              <Card className="you-might-like-card mx-3">
                 <Card.Body className="d-flex">
                   <Card.Img
                     variant="top"
                     src={product.image}
-                    style={{ width: "5rem", height: "auto" }}
+                    style={{ width: "6rem", height: "auto" }}
                     className="youlike-img"
                   />
 
@@ -34,7 +33,7 @@ const ProductsYouMightLike = ({ addToCartHandler }) => {
                     <Card.Title>
                       <Link to={`/products/${product._id}`}>{product.name}</Link>
                     </Card.Title>
-                    <Card.Text style={{ fontSize: "25px" }}>${product.price}</Card.Text>
+                    <Card.Text style={{ fontSize: "20px" }}>${product.price}</Card.Text>
                     <Button variant="outline-dark" onClick={() => addToCartHandler(product, 1)}>
                       ADD TO CART &gt;
                     </Button>

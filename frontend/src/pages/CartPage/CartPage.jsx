@@ -1,18 +1,18 @@
 /* eslint-disable no-unused-vars */
 import { Link, useNavigate } from "react-router-dom";
 import { Row, Col, ListGroup, Image, Form, Button, Card } from "react-bootstrap";
-import { FaTrash } from "react-icons/fa";
 import Message from "../../components/Message";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, removeFromCart } from "../../slices/cartSlice";
 import "./CartPage.css";
 import ProductsYouMightLike from "../../components/ProductsYouMightLike/ProductsYouMightLike";
+import CartItemsList from "../../components/CartItemsList/CartItemsList";
 
 const CartPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  //useSelector to get state data to notify UI
+  //useSelector to get state data from store
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
 
@@ -32,11 +32,11 @@ const CartPage = () => {
 
   return (
     <Row className="CartPart">
-      <Col md={4} className="cart-card">
+      <Col md={5} lg={4} className="cart-card">
         <h2>You Might Also Like</h2>
         <ProductsYouMightLike addToCartHandler={addToCartHandler} />
       </Col>
-      <Col md={8} className="cartitems">
+      <Col md={7} lg={8} className="cartitems">
         <Row className="cartitems my-4 mx-4">
           <h1 className="mb-4">
             CART <span>{cartItemsNumber} ITEMS</span>{" "}
@@ -48,41 +48,11 @@ const CartPage = () => {
               Your cart is empty <Link to="/">Go Back</Link>
             </Message>
           ) : (
-            <ListGroup variant="flush" className="mt-5">
-              {cartItems.map((item) => (
-                <ListGroup.Item key={item._id}>
-                  <Row>
-                    <Col md={2}>
-                      <Image src={item.image} alt={item.name} fluid rounded />
-                    </Col>
-
-                    <Col md={3}>
-                      <Link to={`/products/${item._id}`}>{item.name}</Link>
-                    </Col>
-
-                    <Col md={2}>${item.price}</Col>
-                    <Col md={2}>
-                      <Form.Control
-                        as="select"
-                        value={item.quantity}
-                        onChange={(e) => addToCartHandler(item, Number(e.target.value))}
-                      >
-                        {[...Array(item.countInStock).keys()].map((num) => (
-                          <option key={num + 1} value={num + 1}>
-                            {num + 1}
-                          </option>
-                        ))}
-                      </Form.Control>
-                    </Col>
-                    <Col md={2}>
-                      <Button type="button" variant="light" onClick={() => removeFromCartHandler(item._id)}>
-                        <FaTrash />
-                      </Button>
-                    </Col>
-                  </Row>
-                </ListGroup.Item>
-              ))}
-            </ListGroup>
+            <CartItemsList
+              cartItems={cartItems}
+              addToCartHandler={addToCartHandler}
+              removeFromCartHandler={removeFromCartHandler}
+            />
           )}
         </Row>
 

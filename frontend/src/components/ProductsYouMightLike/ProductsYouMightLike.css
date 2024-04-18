@@ -5,10 +5,11 @@
 
 .you-might-like-card .card-text {
   font-family: "Playfair Display", serif;
+  font-size: 17px;
 }
 
 .you-might-like-card .card-title {
-  font-size: 20px;
+  font-size: 17px;
 }
 
 .youlike-img {
@@ -16,5 +17,5 @@
 }
 
 .you-might-like-card Button {
-  font-size: 13px;
+  font-size: 10px;
 }
