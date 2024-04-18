@@ -45,7 +45,9 @@ const MyOrdersPage = () => {
                       ) : (
                         <Link to={`/orders/${order._id}`}>Process to Pay</Link>
                       )}
-                      <div>{order.isDelivered ? "Delivered" : "Not Delivered"}</div>
+
+                      {order.isDelivered ? <div className="deliverstatus">Delivered</div> : <div>Not Delivered</div>}
+
                       <div>
                         {new Date(order.createdAt).toLocaleDateString("en-US", {
                           day: "numeric",

@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { Row, Col, ListGroup, Image, Card, Button } from "react-bootstrap";
 import Loader from "../../components/Loader/Loader";
-import { useGetOrderByIdQuery, usePayOrderMutation } from "../../slices/ordersApiSlice";
+import { useGetOrderByIdQuery, usePayOrderMutation, useDeliverOrderMutation } from "../../slices/ordersApiSlice";
 import paymentImg from "/images/payment.png";
 import OrderDetail from "../../components/OrderDetail/OrderDetail";
 import img from "/images/processPayment.jpeg";
@@ -16,6 +16,7 @@ const ProcessPaymentPage = () => {
   const { id: orderId } = useParams();
   const { data: order, isLoading, refetch } = useGetOrderByIdQuery(orderId);
   const [payOrder, { isLoading: loadingPay }] = usePayOrderMutation();
+  const [deliverOrder, { isLoading: loadingDelivery }] = useDeliverOrderMutation();
 
   const { userData } = useSelector((state) => state.auth);
 
@@ -24,6 +25,16 @@ const ProcessPaymentPage = () => {
       await payOrder(orderId);
       refetch();
       toast.success("Order is paid");
+    } catch (error) {
+      toast.error(error?.data?.message || error.message);
+    }
+  }
+
+  async function deliveryHandler() {
+    try {
+      await deliverOrder(orderId);
+      refetch();
+      toast.success("Order is delivered");
     } catch (error) {
       toast.error(error?.data?.message || error.message);
     }
@@ -98,9 +109,15 @@ const ProcessPaymentPage = () => {
             )}
           </>
           {userData.isAdmin ? (
-            <Link className="payment-btn btn btn-light my-3 bold" to="/admin/orderlist">
-              Go Back
-            </Link>
+            <>
+              <Button className="payment-btn btn btn-light my-3 bold" onClick={deliveryHandler}>
+                Deliver Order
+              </Button>
+              <Link className="payment-btn btn btn-light my-3 bold" to="/admin/orderlist">
+                Go Back
+              </Link>
+              {loadingDelivery && <Loader />}
+            </>
           ) : (
             <>
               <Image src={paymentImg} className="proceedpayment-img" />
@@ -109,11 +126,15 @@ const ProcessPaymentPage = () => {
                 {" "}
                 Pay{" "}
               </Button>
-              {loadingPay ? (
-                <Loader />
+              {loadingPay && <Loader />}
+
+              {userData.isAdmin ? (
+                <Link className="payment-btn btn btn-light my-3 bold" to="/admin/orderlist">
+                  Go Back
+                </Link>
               ) : (
                 <Link className="payment-btn btn btn-light my-3 bold" to="/orders/myorders">
-                  Finish
+                  Go Back
                 </Link>
               )}
             </>

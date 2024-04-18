@@ -80,9 +80,9 @@ export default function NavBar() {
                     <LinkContainer to="/admin/orderlist">
                       <NavDropdown.Item>Orders</NavDropdown.Item>
                     </LinkContainer>
-                    <LinkContainer to="/orders/myorders">
+                    {/* <LinkContainer to="/orders/myorders">
                       <NavDropdown.Item>My Orders</NavDropdown.Item>
-                    </LinkContainer>
+                    </LinkContainer> */}
 
                     <NavDropdown.Item onClick={logoutHandler}>Logout</NavDropdown.Item>
                   </NavDropdown>

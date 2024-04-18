@@ -60,7 +60,7 @@ async function getOrderById(req, res) {
 }
 
 // update order to paid
-// put /api/oriders/:id/pay
+// put /api/orders/:id/pay
 async function updateOrderToPay(req, res) {
   try {
     const order = await Order.findById(req.params.id);
@@ -79,4 +79,24 @@ async function updateOrderToPay(req, res) {
   }
 }
 
-module.exports = { create, getMyOrders, getOrders, getOrderById, updateOrderToPay };
+//updateOrderToDeliver
+// PUT /api/orders/:id/deliver
+async function updateOrderToDeliver(req, res) {
+  try {
+    const order = await Order.findById(req.params.id);
+    if (order) {
+      order.isDelivered = true;
+      order.deliveredAt = Date.now();
+
+      const deliveredOrder = await order.save();
+      res.status(200).json(deliveredOrder);
+    } else {
+      res.status(404).json({ error: "Order not found" });
+    }
+  } catch (err) {
+    console.log(err);
+    res.status(404).json({ error: err.message });
+  }
+}
+
+module.exports = { create, getMyOrders, getOrders, getOrderById, updateOrderToPay, updateOrderToDeliver };

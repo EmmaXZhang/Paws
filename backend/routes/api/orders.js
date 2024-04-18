@@ -21,7 +21,7 @@ router.put("/:id/pay", protect, ordersCtrl.updateOrderToPay);
 //GET /api/orders
 router.get("/", protect, admin, ordersCtrl.getOrders);
 
-// //PUT /api/users/:id
-// router.put("/:id", protect, admin, usersCtrl.updateUser);
+// //PUT /api/users/:id/deliver
+router.put("/:id/deliver", protect, admin, ordersCtrl.updateOrderToDeliver);
 
 module.exports = router;
