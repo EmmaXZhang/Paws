@@ -55,7 +55,7 @@ const ProductPriceCard = ({ product }) => {
               </Col>
               <Col>
                 <Button
-                  className="btn-block"
+                  className="btn-block mb-4"
                   type="button"
                   variant="outline-dark"
                   disabled={product.countInStock === 0}
@@ -68,6 +68,10 @@ const ProductPriceCard = ({ product }) => {
           </ListGroup.Item>
         )}
       </ListGroup>
+      <ListGroup.Item className="pickup">
+        <p className="mt-4">PICKUP AVAILABLE AT STORE </p>
+        <p style={{ fontSize: "13px" }}>Ready in about 2-4 days</p>
+      </ListGroup.Item>
     </Card>
   );
 };

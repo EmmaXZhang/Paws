@@ -59,3 +59,11 @@
 .quantity-field .value-button {
   background-color: transparent;
 }
+
+.pickup p:first-child {
+  font-family: "Playfair Display", serif;
+}
+
+.pickup p > :nth-child(2) {
+  font-size: 5px;
+}
