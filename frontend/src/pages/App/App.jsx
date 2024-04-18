@@ -21,6 +21,8 @@ import MyOrdersPage from "../MyOrdersPage/MyOrdersPage.jsx";
 import Admin from "../../components/Admin.jsx";
 import OrderListPage from "../OrderListPage/OrderListPage.jsx";
 import ProductListPage from "../ProductListPage/ProductListPage.jsx";
+import BedsPage from "../BedsPage/BedsPage.jsx";
+import TowersPage from "../TowersPage/TowersPage.jsx";
 
 function App() {
   return (
@@ -35,6 +37,8 @@ function App() {
             {/* go to url */}
             <Route path="/" element={<HomePage />} />
             <Route path="/products" element={<AllProductPage />} />
+            <Route path="/products/beds" element={<BedsPage />} />
+            <Route path="/products/towers" element={<TowersPage />} />
             <Route path="/dogs" element={<DogPage />} />
             <Route path="/cats" element={<CatPage />} />
             <Route path="/products/:id" element={<ProductPage />} />

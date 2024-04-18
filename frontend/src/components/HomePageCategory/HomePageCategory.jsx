@@ -1,5 +1,6 @@
 import { Card, Col } from "react-bootstrap";
 import "./HomePageCategory.css";
+import { Link } from "react-router-dom";
 
 export default function HomePageCategory() {
   return (
@@ -20,7 +21,9 @@ export default function HomePageCategory() {
         <Card className="category-card" style={{ padding: 0 }}>
           <Card.Img variant="top" src="./images/shop-bed.jpeg" />
           <Card.Body className="cardBody">
-            <Card.Title>SHOP BEDS</Card.Title>
+            <Card.Title>
+              <Link to="/products/beds">SHOP BEDS</Link>
+            </Card.Title>
           </Card.Body>
         </Card>
       </Col>
@@ -28,7 +31,9 @@ export default function HomePageCategory() {
         <Card className="category-card" style={{ padding: 0 }}>
           <Card.Img variant="top" src="./images/shop-towel.webp" />
           <Card.Body className="cardBody">
-            <Card.Title>SHOP TOWERS</Card.Title>
+            <Card.Title>
+              <Link to="/products/towers">SHOP TOWERS</Link>
+            </Card.Title>
           </Card.Body>
         </Card>
       </Col>

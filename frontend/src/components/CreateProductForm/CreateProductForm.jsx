@@ -123,15 +123,15 @@ const CreateProductForm = ({ refetch }) => {
               <Form.Label>Category</Form.Label>
               <Form.Select value={category} onChange={(e) => setCategory(e.target.value)}>
                 <option value="">Select Category</option>
-                <option value="dog-bed">Dog Bed</option>
-                <option value="dog-eat">Dog Eat</option>
-                <option value="dog-wear">Dog Wear</option>
-                <option value="dog-eat">Dog Play</option>
+                <option value="Dog Bed">Dog Bed</option>
+                <option value="Dog Eat">Dog Eat</option>
+                <option value="Dog Wear">Dog Wear</option>
+                <option value="Dog Play">Dog Play</option>
 
-                <option value="cat-bed">Cat Tower</option>
-                <option value="cat-eat">Cat Eat</option>
-                <option value="cat-wear">Cat Play</option>
-                <option value="cat-scratch">Cat Scratch</option>
+                <option value="Cat Tower">Cat Tower</option>
+                <option value="Cat Eat">Cat Eat</option>
+                <option value="Cat Play">Cat Play</option>
+                <option value="Cat Scratch">Cat Scratch</option>
               </Form.Select>
             </Form.Group>
             <Form.Group className="mb-3" controlId="petCategory">

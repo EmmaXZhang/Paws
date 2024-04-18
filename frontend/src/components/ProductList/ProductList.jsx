@@ -208,13 +208,18 @@ const ProductList = ({ products }) => {
               </Form.Group>
               <Form.Group className="mb-3" controlId="category">
                 <Form.Label>Category</Form.Label>
-                <Form.Control
-                  type="category"
-                  placeholder="Enter category"
-                  value={category}
-                  onChange={(e) => setCategory(e.target.value)}
-                  autoFocus
-                />
+                <Form.Select value={category} onChange={(e) => setCategory(e.target.value)}>
+                  <option value="">Select Category</option>
+                  <option value="Dog Bed">Dog Bed</option>
+                  <option value="Dog Eat">Dog Eat</option>
+                  <option value="Dog Wear">Dog Wear</option>
+                  <option value="Dog Play">Dog Play</option>
+
+                  <option value="Cat Tower">Cat Tower</option>
+                  <option value="Cat Eat">Cat Eat</option>
+                  <option value="Cat Play">Cat Play</option>
+                  <option value="Cat Scratch">Cat Scratch</option>
+                </Form.Select>
               </Form.Group>
               <Form.Group className="mb-3" controlId="petCategory">
                 <Form.Label>Pet Category</Form.Label>
