@@ -25,29 +25,35 @@ const MyOrdersPage = () => {
 
       {isLoading ? (
         <Loader />
-      ) : orders.length > 0 ? (
+      ) : (
         <>
           <Accordion defaultActiveKey="0">
             {orders.map((order, index) => (
               <Accordion.Item eventKey={index} key={index}>
                 <Accordion.Header className="myorders">
                   <Row>
-                    <b>Order Number</b>
-                    <b>Payment Status</b>
-                    <b>Order Status</b>
-                    <b>Create Date</b>
-                  </Row>
-                  <Row>
-                    <span>{order._id}</span>
-                    <Link to={`/orders/${order._id}`}>Procee to Pay</Link>
-                    <span>{order.isDelivered ? "Delivered" : "Not Delivered"}</span>
-                    <span>
-                      {new Date(order.createdAt).toLocaleDateString("en-US", {
-                        day: "numeric",
-                        month: "numeric",
-                        year: "numeric",
-                      })}
-                    </span>
+                    <Col sm={6} md={6}>
+                      <div>Order Number</div>
+                      <div>Payment Status</div>
+                      <div>Order Status</div>
+                      <div>Create Date</div>
+                    </Col>
+                    <Col sm={6} md={6}>
+                      <div>{order._id}</div>
+                      {order.isPaid ? (
+                        <div className="paystatus">Paid</div>
+                      ) : (
+                        <Link to={`/orders/${order._id}`}>Process to Pay</Link>
+                      )}
+                      <div>{order.isDelivered ? "Delivered" : "Not Delivered"}</div>
+                      <div>
+                        {new Date(order.createdAt).toLocaleDateString("en-US", {
+                          day: "numeric",
+                          month: "numeric",
+                          year: "numeric",
+                        })}
+                      </div>
+                    </Col>
                   </Row>
                 </Accordion.Header>
                 <Accordion.Body>
@@ -57,8 +63,6 @@ const MyOrdersPage = () => {
             ))}
           </Accordion>
         </>
-      ) : (
-        <p>No orders found.</p>
       )}
     </>
   );

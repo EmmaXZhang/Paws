@@ -80,7 +80,7 @@ export default function NavBar() {
                     <LinkContainer to="/admin/orderlist">
                       <NavDropdown.Item>Orders</NavDropdown.Item>
                     </LinkContainer>
-                    <LinkContainer to="/myorders">
+                    <LinkContainer to="/orders/myorders">
                       <NavDropdown.Item>My Orders</NavDropdown.Item>
                     </LinkContainer>
 
@@ -88,7 +88,7 @@ export default function NavBar() {
                   </NavDropdown>
                 ) : (
                   <NavDropdown title={userData.name} id="username">
-                    <LinkContainer to="/myorders">
+                    <LinkContainer to="/orders/myorders">
                       <NavDropdown.Item>My Orders</NavDropdown.Item>
                     </LinkContainer>
 

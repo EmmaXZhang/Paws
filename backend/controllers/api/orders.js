@@ -59,4 +59,24 @@ async function getOrderById(req, res) {
   }
 }
 
-module.exports = { create, getMyOrders, getOrders, getOrderById };
+// update order to paid
+// put /api/oriders/:id/pay
+async function updateOrderToPay(req, res) {
+  try {
+    const order = await Order.findById(req.params.id);
+    if (order) {
+      order.isPaid = true;
+      order.paidAt = Date.now();
+
+      const paidOrder = await order.save();
+      res.status(200).json(paidOrder);
+    } else {
+      res.status(404).json({ error: "Order not found" });
+    }
+  } catch (err) {
+    console.log(err);
+    res.status(404).json({ error: err.message });
+  }
+}
+
+module.exports = { create, getMyOrders, getOrders, getOrderById, updateOrderToPay };

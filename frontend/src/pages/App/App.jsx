@@ -41,15 +41,17 @@ function App() {
             <Route path="/cart" element={<CartPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
-            <Route path="/orders/:id" element={<ProcessPaymentPage />} />
 
             {/* private route to define path */}
             <Route path="" element={<PrivateRoute />}>
               <Route path="/checkout" element={<CheckoutPage />} />
               <Route path="/placeorder" element={<PlaceOrderPage />} />
-              <Route path="/myorders" element={<MyOrdersPage />} />
+              <Route path="/orders/myorders" element={<MyOrdersPage />} />
             </Route>
 
+            <Route path="/orders/:id" element={<ProcessPaymentPage />} />
+
+            {/* admin */}
             <Route path="" element={<Admin />}>
               <Route path="/admin/orderlist" element={<OrderListPage />} />
               <Route path="/admin/productlist" element={<ProductListPage />} />

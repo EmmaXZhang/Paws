@@ -14,6 +14,9 @@ router.get("/myorders", protect, ordersCtrl.getMyOrders);
 // GET /api/orders/:id
 router.get("/:id", protect, ordersCtrl.getOrderById);
 
+// PUT /api/orders/:id/pay
+router.put("/:id/pay", protect, ordersCtrl.updateOrderToPay);
+
 //Admin users---------------------------
 //GET /api/orders
 router.get("/", protect, admin, ordersCtrl.getOrders);

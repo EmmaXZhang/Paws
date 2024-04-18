@@ -16,6 +16,13 @@
 .payment-btn {
   width: 100%;
   font-size: large;
-  font-weight: bold;
+
+  background-color: lightgrey;
+}
+
+.payment-btn Button {
+  width: 100%;
+  font-size: large;
+
   background-color: lightgrey;
 }
