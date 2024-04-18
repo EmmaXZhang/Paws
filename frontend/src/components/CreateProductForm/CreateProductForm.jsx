@@ -56,6 +56,17 @@ const CreateProductForm = ({ refetch }) => {
       const res = await createProduct(product).unwrap();
       toast.success("Product created successfully");
       setShow(false);
+
+      // Clear the form by resetting state values
+      setName("");
+      setPrice("");
+      setImageUrl("");
+      setCloudinaryId("");
+      setBrand("");
+      setCategory("");
+      setPetCategory("");
+      setCountInStock("");
+      setDescription("");
     } catch (err) {
       toast.error(err?.data?.message || err.error);
     }
@@ -110,13 +121,18 @@ const CreateProductForm = ({ refetch }) => {
             </Form.Group>
             <Form.Group className="mb-3" controlId="category">
               <Form.Label>Category</Form.Label>
-              <Form.Control
-                type="category"
-                placeholder="Enter category"
-                value={category}
-                onChange={(e) => setCategory(e.target.value)}
-                autoFocus
-              />
+              <Form.Select value={category} onChange={(e) => setCategory(e.target.value)}>
+                <option value="">Select Category</option>
+                <option value="dog-bed">Dog Bed</option>
+                <option value="dog-eat">Dog Eat</option>
+                <option value="dog-wear">Dog Wear</option>
+                <option value="dog-eat">Dog Play</option>
+
+                <option value="cat-bed">Cat Tower</option>
+                <option value="cat-eat">Cat Eat</option>
+                <option value="cat-wear">Cat Play</option>
+                <option value="cat-scratch">Cat Scratch</option>
+              </Form.Select>
             </Form.Group>
             <Form.Group className="mb-3" controlId="petCategory">
               <Form.Label>Pet Category</Form.Label>
