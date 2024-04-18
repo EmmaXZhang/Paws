@@ -67,3 +67,26 @@
 .pickup p > :nth-child(2) {
   font-size: 5px;
 }
+
+.productPriceCard h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 50px;
+  margin-bottom: 20px;
+  color: RGB(58, 58, 62);
+}
+
+.productPriceCard .list-group-item:first-child {
+  font-family: "Playfair Display", serif;
+  background-color: RGB(45, 123, 108);
+  color: white;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.productPriceCard .list-group-horizontal > .list-group-item:last-child:not(:first-child) {
+  font-family: "Playfair Display", serif;
+  background-color: RGB(249, 243, 241);
+  color: RGB(58, 58, 62);
+  margin-top: 20px;
+  margin-bottom: 20px;
+}

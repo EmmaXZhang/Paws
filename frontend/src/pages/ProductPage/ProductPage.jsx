@@ -37,13 +37,12 @@ export default function ProductPage() {
             </Col>
           </Row>
           <Row>
-            <Col md={4}>
+            <Col md={7}>
               <ListGroup variant="flush">
-                <ListGroup.Item>
+                <ListGroup.Item className="mt-4">Description: {product.description}</ListGroup.Item>
+                <ListGroup.Item className="mt-3">
                   <Rating value={product.rating} text={`${product.numReviews} reviews`} />
                 </ListGroup.Item>
-                <ListGroup.Item>Price: ${product.price}</ListGroup.Item>
-                <ListGroup.Item>Description: {product.description}</ListGroup.Item>
               </ListGroup>
             </Col>
           </Row>
