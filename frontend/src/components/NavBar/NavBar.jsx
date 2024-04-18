@@ -10,6 +10,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { logout } from "../../slices/authSlice";
 import { useLogoutMutation } from "../../slices/usersApiSlice";
+import { resetCart } from "../../slices/cartSlice";
 
 import "./NavBar.css";
 
@@ -34,6 +35,7 @@ export default function NavBar() {
       await logoutBackend().unwrap();
       //clear localstorage data
       dispatch(logout());
+      dispatch(resetCart());
       navigate("/");
     } catch (error) {
       console.log(error);

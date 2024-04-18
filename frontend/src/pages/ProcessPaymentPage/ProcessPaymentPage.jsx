@@ -108,11 +108,13 @@ const ProcessPaymentPage = () => {
               <Message variant="danger">Not paid</Message>
             )}
           </>
-          {userData.isAdmin ? (
+          {userData && userData.isAdmin && order.isPaid ? (
             <>
-              <Button className="payment-btn btn btn-light my-3 bold" onClick={deliveryHandler}>
-                Deliver Order
-              </Button>
+              {!order.isDelivered && (
+                <Button className="payment-btn btn btn-light my-3 bold" onClick={deliveryHandler}>
+                  Deliver Order
+                </Button>
+              )}
               <Link className="payment-btn btn btn-light my-3 bold" to="/admin/orderlist">
                 Go Back
               </Link>
@@ -123,8 +125,7 @@ const ProcessPaymentPage = () => {
               <Image src={paymentImg} className="proceedpayment-img" />
 
               <Button className="payment-btn btn btn-light my-3 bold" onClick={paymentHandler}>
-                {" "}
-                Pay{" "}
+                Pay
               </Button>
               {loadingPay && <Loader />}
 

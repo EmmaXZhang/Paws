@@ -1,10 +1,13 @@
+.category-card {
+  border: none;
+}
 .category-card .card-img-top {
   height: 350px;
-
   object-fit: cover;
   padding: 0;
 }
 
 .cardBody {
   background-color: RGB(249, 243, 241);
+  border: none;
 }

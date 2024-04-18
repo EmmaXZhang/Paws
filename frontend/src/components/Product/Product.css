@@ -1,0 +1,12 @@
+.productCard .card-img-top {
+  height: 220px;
+}
+
+.productCard {
+  background-color: RGB(249, 243, 241);
+  border-color: RGB(249, 243, 241);
+}
+
+.productPrice {
+  font-family: "Playfair Display", serif;
+}

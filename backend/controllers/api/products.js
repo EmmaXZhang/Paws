@@ -8,7 +8,7 @@ async function index(req, res) {
 
     const filter = petCategory ? { petCategory } : {};
 
-    const products = await Product.find(filter);
+    const products = await Product.find(filter).sort({ createdAt: -1 });
 
     res.json(products);
   } catch (error) {

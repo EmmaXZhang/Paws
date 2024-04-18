@@ -19,3 +19,9 @@
   height: auto;
   z-index: -1;
 }
+
+.latestProducts {
+  font-family: "Playfair Display", serif;
+  color: RGB(152, 75, 44);
+  margin-bottom: 25px;
+}

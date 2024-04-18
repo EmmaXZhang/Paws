@@ -23,9 +23,7 @@ const cartSlice = createSlice({
 
       // if item to be added is already in cart, update its detail with itemToAdd, or leave it is
       if (existItem) {
-        state.cartItems = state.cartItems.map((i) =>
-          i._id === existItem._id ? itemToAdd : i
-        );
+        state.cartItems = state.cartItems.map((i) => (i._id === existItem._id ? itemToAdd : i));
       } else {
         //ADD new product to cart state
         state.cartItems = [...state.cartItems, itemToAdd];
@@ -56,16 +54,13 @@ const cartSlice = createSlice({
       state.cartItems = [];
       return updateCart(state);
     },
+    // reset state for when a user logs out so the next
+    // user doesn't inherit the previous users cart and shipping
+    resetCart: (state) => (state = initialState),
   },
 });
 
 //cartSlice.actions -> enable other component can use this function.
-export const {
-  addToCart,
-  removeFromCart,
-  saveShippingAddress,
-  savePayment,
-  clearCart,
-} = cartSlice.actions;
+export const { addToCart, removeFromCart, saveShippingAddress, savePayment, clearCart, resetCart } = cartSlice.actions;
 
 export default cartSlice.reducer;
