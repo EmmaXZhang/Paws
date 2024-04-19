@@ -42,7 +42,7 @@ const ProductPriceCard = ({ product }) => {
         {product.countInStock > 0 && (
           <ListGroup.Item>
             <Row>
-              <Col>
+              <Col sm={4} md={6} lg={4} className="text-start">
                 <div className="quantity-field">
                   <button className="value-button decrease-button" onClick={decreseQty} title="Azalt">
                     -
@@ -53,7 +53,7 @@ const ProductPriceCard = ({ product }) => {
                   </button>
                 </div>
               </Col>
-              <Col>
+              <Col sm={8} md={6} lg={8}>
                 <Button
                   className="btn-block mb-4"
                   type="button"
