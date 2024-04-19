@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { Form, Row, Col, ListGroup, Card, Button } from "react-bootstrap";
+import { Row, Col, ListGroup, Card, Button } from "react-bootstrap";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../slices/cartSlice";
@@ -28,7 +28,7 @@ const ProductPriceCard = ({ product }) => {
   }
 
   return (
-    <Card className="productPriceCard">
+    <Card className="productPriceCard" id="priceCard">
       <ListGroup variant="flush">
         <p>PAWS</p>
         <h3>{product.name}</h3>
