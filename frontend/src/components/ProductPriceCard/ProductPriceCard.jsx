@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { Row, Col, ListGroup, Card, Button } from "react-bootstrap";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../slices/cartSlice";
 import "./ProductPriceCard.css";
@@ -8,6 +8,25 @@ import "./ProductPriceCard.css";
 const ProductPriceCard = ({ product }) => {
   const [quantity, setQuantity] = useState(1);
   const dispatch = useDispatch();
+  const priceCardRef = useRef(null);
+
+  useEffect(() => {
+    const priceCard = priceCardRef.current;
+
+    function changeCardBackgroundColor() {
+      if (window.scrollY > 100) {
+        priceCard.style.backgroundColor = "rgb(249, 243, 241)";
+      } else {
+        priceCard.style.backgroundColor = "";
+      }
+    }
+
+    window.addEventListener("scroll", changeCardBackgroundColor);
+
+    return () => {
+      window.removeEventListener("scroll", changeCardBackgroundColor);
+    };
+  }, []);
 
   function addToCartHandler() {
     // product -> data:product
@@ -28,7 +47,7 @@ const ProductPriceCard = ({ product }) => {
   }
 
   return (
-    <Card className="productPriceCard" id="priceCard">
+    <Card className="productPriceCard" ref={priceCardRef}>
       <ListGroup variant="flush">
         <p>PAWS</p>
         <h3>{product.name}</h3>

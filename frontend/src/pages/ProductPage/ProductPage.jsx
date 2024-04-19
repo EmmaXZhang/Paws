@@ -8,30 +8,11 @@ import ProductPriceCard from "../../components/ProductPriceCard/ProductPriceCard
 import { useGetProductDetailsQuery } from "../../slices/productsApiSlice";
 import { useParams } from "react-router-dom";
 import ReviewForm from "../../components/ReviewForm/ReviewForm";
-import { useEffect } from "react";
 
 export default function ProductPage() {
   // match route endpoint
   const { id } = useParams();
   const { data: product, isLoading, error, refetch } = useGetProductDetailsQuery(id);
-
-  //change priceCard background color when scroll down page
-  useEffect(() => {
-    const priceCard = document.getElementById("priceCard");
-
-    function changeCardBackgroundColor() {
-      if (window.scrollY > 100) {
-        priceCard.style.backgroundColor = "rgb(249, 243, 241)";
-      } else {
-        priceCard.style.backgroundColor = "";
-      }
-    }
-    window.addEventListener("scroll", changeCardBackgroundColor);
-    // Cleanup function to remove the event listener when the component is unmounted
-    return () => {
-      window.removeEventListener("scroll", changeCardBackgroundColor);
-    };
-  }, []);
 
   return (
     <>
@@ -86,7 +67,7 @@ export default function ProductPage() {
             </Col>
             <Col md={5} lg={5}>
               <div className="productPriceCardContainer">
-                <ProductPriceCard product={product} id="priceCard" />
+                <ProductPriceCard product={product} />
               </div>
             </Col>
           </Row>
