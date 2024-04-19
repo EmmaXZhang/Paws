@@ -18,4 +18,8 @@ router.get("/:id", productsCtrl.show);
 // PUT /api/products/:id/
 router.put("/:id", protect, admin, productsCtrl.update);
 
+// create review
+// POST /api/products/:id/reviews
+router.post("/:id/reviews", protect, productsCtrl.createReview);
+
 module.exports = router;

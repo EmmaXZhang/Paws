@@ -42,20 +42,30 @@ async function getMyOrders(req, res) {
 // Get all orders
 // GET /api/orders
 async function getOrders(req, res) {
-  const orders = await Order.find({}).populate("user", "id name");
-  res.json(orders);
+  try {
+    const orders = await Order.find({}).populate("user", "id name");
+    res.json(orders);
+  } catch (error) {
+    console.log(err);
+    res.status(404).json({ error: err.message });
+  }
 }
 
 //Get order by ID
 // GET /api/orders/:id
 async function getOrderById(req, res) {
-  const order = await Order.findById(req.params.id).populate("user");
+  try {
+    const order = await Order.findById(req.params.id).populate("user");
 
-  if (order) {
-    res.json(order);
-  } else {
-    res.status(404);
-    throw new Error("Order not found");
+    if (order) {
+      res.json(order);
+    } else {
+      res.status(404);
+      throw new Error("Order not found");
+    }
+  } catch (error) {
+    console.log(err);
+    res.status(404).json({ error: err.message });
   }
 }
 

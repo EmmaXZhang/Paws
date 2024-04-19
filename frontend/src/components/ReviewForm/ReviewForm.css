@@ -1,0 +1,10 @@
+.reviewHeading {
+  font-family: "Playfair Display", serif;
+  color: RGB(58, 58, 62);
+  margin-bottom: 15px;
+  font-size: 28px;
+}
+
+.reviewForm {
+  max-width: 50%;
+}

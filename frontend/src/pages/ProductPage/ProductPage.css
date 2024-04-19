@@ -2,3 +2,15 @@
   max-width: 550px;
   width: 100%;
 }
+
+.reviewGallery h2 {
+  font-family: "Playfair Display", serif;
+  color: RGB(58, 58, 62);
+  margin-bottom: 15px;
+  font-size: 28px;
+}
+
+.reviewGallery .toast {
+  margin-bottom: 10px;
+  margin-right: 20px;
+}

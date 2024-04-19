@@ -1,4 +1,5 @@
 const Product = require("../../models/product");
+const Review = require("../../models/product");
 
 // fetch all product
 async function index(req, res) {
@@ -34,8 +35,6 @@ async function show(req, res) {
 async function newProduct(req, res) {
   try {
     const { name, price, image, description, brand, category, petCategory, countInStock, cloudinaryId } = req.body;
-
-    console.log("request", req.body);
 
     if (!name || !price || !image || !description || !brand || !category || !petCategory || !countInStock) {
       return res.status(400).json({ message: "Required fields are missing." });
@@ -105,10 +104,48 @@ async function deleteProduct(req, res) {
   }
 }
 
+// create review
+// POST /api/products/:id/reviews
+async function createReview(req, res) {
+  try {
+    const { rating, comment } = req.body;
+    const product = await Product.findById(req.params.id);
+
+    if (!rating || !comment) {
+      return res.status(400).json({ message: "Required fields are missing." });
+    }
+
+    if (!req.user._id) {
+      return res.status(400).json({ message: "User id is missing." });
+    }
+
+    const review = {
+      name: req.user.name,
+      rating: Number(rating),
+      comment,
+      user: req.user._id,
+    };
+
+    //directly interacting with the embedded reviewSchema, change review to Review instance
+    // no need to create review instance above
+    product.reviews.push(review);
+    // number of reviews
+    product.numReviews = product.reviews.length;
+    //rating
+    product.rating = product.reviews.reduce((acc, review) => acc + review.rating, 0) / product.reviews.length;
+
+    await product.save();
+    res.status(200).json({ message: "Review created successfully" });
+  } catch (error) {
+    console.log("create a review", error);
+  }
+}
+
 module.exports = {
   index,
   show,
   new: newProduct,
   update,
   delete: deleteProduct,
+  createReview,
 };

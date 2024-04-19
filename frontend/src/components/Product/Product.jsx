@@ -21,7 +21,7 @@ export default function Product({ product }) {
           ${product.price}
         </Card.Text>
         <Card.Text as="div">
-          <Rating value={product.rating} text={`${product.numReviews}reviews`} />
+          <Rating value={product.rating} text={`${product.numReviews} reviews`} />
         </Card.Text>
       </Card.Body>
     </Card>

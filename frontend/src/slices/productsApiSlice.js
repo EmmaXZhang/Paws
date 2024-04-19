@@ -60,6 +60,7 @@ export const productsApiSlice = apiSlice.injectEndpoints({
       invalidatesTags: ["Product"],
     }),
 
+    // UPDATE product images
     uploadProductImage: builder.mutation({
       query: (data) => ({
         url: `/api/images/upload`,
@@ -68,6 +69,7 @@ export const productsApiSlice = apiSlice.injectEndpoints({
       }),
     }),
 
+    // Delete product
     deleteProduct: builder.mutation({
       query: (productId) => ({
         // productId coming from productId passed from frontend page
@@ -76,11 +78,22 @@ export const productsApiSlice = apiSlice.injectEndpoints({
       }),
     }),
 
+    //Delete product images from cloudinary
     deleteProductImage: builder.mutation({
       query: (cloudinaryId) => ({
         url: `/api/images/${cloudinaryId}`,
         method: "DELETE",
       }),
+    }),
+
+    // CREATE product review
+    createReview: builder.mutation({
+      query: (review) => ({
+        url: `/api/products/${review.productId}/reviews`,
+        method: "POST",
+        body: review,
+      }),
+      invalidatesTags: ["Product"],
     }),
   }),
 });
@@ -94,4 +107,5 @@ export const {
   useUploadProductImageMutation,
   useDeleteProductMutation,
   useDeleteProductImageMutation,
+  useCreateReviewMutation,
 } = productsApiSlice;
