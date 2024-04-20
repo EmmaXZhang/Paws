@@ -7,10 +7,15 @@
 }
 
 .myorders a {
-  margin-bottom: 8px;
   color: RGB(45, 123, 108);
+  font-weight: bold;
 }
 
 .paystatus {
   color: RGB(45, 123, 108);
+  font-weight: bold;
+}
+
+.myorders {
+  background-color: RGB(249, 243, 241);
 }

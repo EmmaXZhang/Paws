@@ -3,7 +3,7 @@ import Product from "../../components/Product/Product";
 import { useGetProductsQuery } from "../../slices/productsApiSlice";
 import Loader from "../../components/Loader/Loader";
 import Message from "../../components/Message";
-import backgroundImage from "/images/dog-page.jpeg";
+import backgroundImage from "/images/cat-page.jpeg";
 import { Link } from "react-router-dom";
 
 const TowersPage = () => {
@@ -20,7 +20,7 @@ const TowersPage = () => {
         <div className="overlay" style={{ zIndex: 0 }}></div>
         <Row style={{ zIndex: 1 }}>
           <Col>
-            <span>Dog Beds</span>
+            <span>Towers</span>
           </Col>
         </Row>
       </div>

@@ -107,7 +107,7 @@ const ShippingPage = () => {
             <Col className="d-flex justify-content-end">
               <Button
                 type="submit"
-                variant="primary"
+                variant="success"
                 disabled={!isShippingAddressSaved && !isShippingAddressSavedSuccessfully}
               >
                 Continue

@@ -33,22 +33,28 @@ const MyOrdersPage = () => {
                 <Accordion.Header className="myorders">
                   <Row>
                     <Col sm={6} md={6}>
-                      <div>Order Number</div>
-                      <div>Payment Status</div>
-                      <div>Order Status</div>
-                      <div>Create Date</div>
+                      <div className="mb-2">Order Number</div>
+                      <div className="mb-2">Payment Status</div>
+                      <div className="mb-2">Order Status</div>
+                      <div className="mb-2">Create Date</div>
                     </Col>
                     <Col sm={6} md={6}>
-                      <div>{order._id}</div>
+                      <div className="mb-2">{order._id}</div>
                       {order.isPaid ? (
-                        <div className="paystatus">Paid</div>
+                        <div className="paystatus mb-2">Paid</div>
                       ) : (
-                        <Link to={`/orders/${order._id}`}>Process to Pay</Link>
+                        <div className="mb-2">
+                          <Link to={`/orders/${order._id}`}>Process to Pay</Link>
+                        </div>
                       )}
 
-                      {order.isDelivered ? <div className="deliverstatus">Delivered</div> : <div>Not Delivered</div>}
+                      {order.isDelivered ? (
+                        <div className="deliverstatus mb-2">Delivered</div>
+                      ) : (
+                        <div className="mb-2">Not Delivered</div>
+                      )}
 
-                      <div>
+                      <div className="mb-2">
                         {new Date(order.createdAt).toLocaleDateString("en-US", {
                           day: "numeric",
                           month: "numeric",

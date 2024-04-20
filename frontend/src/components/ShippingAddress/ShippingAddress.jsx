@@ -42,7 +42,7 @@ const ShippingAddress = ({
       </Form.Group>
 
       <Col className="d-flex justify-content-end">
-        <Button className="mb-3" variant="primary" type="submit">
+        <Button className="mb-3" variant="success" type="submit">
           Save
         </Button>
       </Col>
