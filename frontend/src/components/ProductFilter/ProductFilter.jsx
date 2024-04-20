@@ -1,7 +1,10 @@
 /* eslint-disable react/prop-types */
 import { Dropdown } from "react-bootstrap";
 
-const ProductFilter = ({ categorySelect, categoryList, categorySelectHandler }) => {
+const ProductFilter = ({ categorySelect, categoryList, setCategorySelect }) => {
+  function categorySelectHandler(selectedCategory) {
+    setCategorySelect(selectedCategory === categorySelect ? null : selectedCategory);
+  }
   return (
     <Dropdown>
       <Dropdown.Toggle id="dropdown-basic">{categorySelect ? categorySelect : "Category"}</Dropdown.Toggle>

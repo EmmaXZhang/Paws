@@ -1,8 +1,8 @@
-.productCategory .btn-check:checked + .btn,
-.productCategory .btn.active,
-.productCategory .btn.show,
-.productCategory .btn:first-child:active,
-.productCategory :not(.btn-check) + .btn:active {
+.productSort .btn-check:checked + .btn,
+.productSort .btn.active,
+.productSort .btn.show,
+.productSort .btn:first-child:active,
+.productSort :not(.btn-check) + .btn:active {
   background-color: RGB(249, 243, 241);
   border-color: RGB(249, 243, 241);
   color: RGB(58, 58, 62);
@@ -10,13 +10,13 @@
   width: 100%;
 }
 
-.productCategory .btn:hover {
+.productSort .btn:hover {
   background-color: RGB(249, 243, 241);
   border-color: RGB(249, 243, 241);
   color: RGB(58, 58, 62);
 }
 
-.productCategory Button {
+.productSort Button {
   background-color: RGB(249, 243, 241);
   border-color: RGB(249, 243, 241);
   color: RGB(58, 58, 62);
@@ -24,9 +24,9 @@
   width: 100%;
 }
 
-.productCategory .dropdown-menu {
+.productSort .dropdown-menu {
   background-color: RGB(249, 243, 241);
-  color: RGB(58, 58, 62);
   min-width: 220px;
   width: 100%;
+  color: RGB(58, 58, 62);
 }

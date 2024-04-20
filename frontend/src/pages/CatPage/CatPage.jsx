@@ -7,13 +7,16 @@ import backgroundImage from "/images/cat-page.jpeg";
 import "./CatPage.css";
 import ProductFilter from "../../components/ProductFilter/ProductFilter";
 import { useState } from "react";
+import ProductSort from "../../components/ProductSort/ProductSort";
 
 export default function DogPage() {
   const { data: products, isLoading, error } = useGetProductsByCategoryQuery("cats");
 
+  const [sort, setSort] = useState(null);
   const [categorySelect, setCategorySelect] = useState(null);
 
   let categoryList = new Set();
+
   //create category list
   if (products) {
     products.forEach((product) => categoryList.add(product.category));
@@ -26,8 +29,18 @@ export default function DogPage() {
     filteredProducts = filteredProducts.filter((product) => product.category === categorySelect);
   }
 
-  function categorySelectHandler(selectedCategory) {
-    setCategorySelect(selectedCategory === categorySelect ? null : selectedCategory);
+  // sort applied
+  if (sort) {
+    const [sortBy, sortOrder] = sort.split(":");
+    filteredProducts = [...filteredProducts].sort((a, b) => {
+      if (sortBy === "Price") {
+        return sortOrder === "High to Low" ? b.price - a.price : a.price - b.price;
+      } else if (sortBy === "Product") {
+        const dateA = new Date(a.createdAt);
+        const dateB = new Date(b.createdAt);
+        return sortOrder == "New to Old" ? dateB - dateA : dateA - dateB;
+      }
+    });
   }
 
   return (
@@ -52,14 +65,21 @@ export default function DogPage() {
           <Row>
             <p className="mt-5">FILTER BY:</p>
           </Row>
+
           <Row>
-            <div className="mb-2 productCategory">
-              <ProductFilter
-                categorySelect={categorySelect}
-                categoryList={categoryList}
-                categorySelectHandler={categorySelectHandler}
-              />
-            </div>
+            <Col sm={6}>
+              <div className="mb-2 productCategory d-flex justify-content-start">
+                <ProductFilter
+                  categorySelect={categorySelect}
+                  categoryList={categoryList}
+                  setCategorySelect={setCategorySelect}
+                />
+              </div>
+            </Col>
+            {/* sort product */}
+            <Col className="productSort d-flex justify-content-end" sm={6}>
+              <ProductSort sort={sort} setSort={setSort} />
+            </Col>
           </Row>
           <Row>
             {filteredProducts.map((product) => (
