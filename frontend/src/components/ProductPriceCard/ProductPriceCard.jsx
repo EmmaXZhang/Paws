@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../slices/cartSlice";
 import "./ProductPriceCard.css";
+import QuantityField from "../QuantityField/QuantityField";
 
 const ProductPriceCard = ({ product }) => {
   const [quantity, setQuantity] = useState(1);
@@ -34,18 +35,6 @@ const ProductPriceCard = ({ product }) => {
     dispatch(addToCart({ ...product, quantity }));
   }
 
-  function increaseQty() {
-    if (quantity < product.countInStock) {
-      setQuantity(quantity + 1);
-    }
-  }
-
-  function decreseQty() {
-    if (quantity > 1) {
-      setQuantity(quantity - 1);
-    }
-  }
-
   return (
     <Card className="productPriceCard" ref={priceCardRef}>
       <ListGroup variant="flush">
@@ -62,15 +51,7 @@ const ProductPriceCard = ({ product }) => {
           <ListGroup.Item>
             <Row>
               <Col sm={4} md={6} lg={4} className="text-start">
-                <div className="quantity-field">
-                  <button className="value-button decrease-button" onClick={decreseQty} title="Azalt">
-                    -
-                  </button>
-                  <div className="number">{quantity}</div>
-                  <button className="value-button increase-button" onClick={increaseQty} title="Arrtir">
-                    +
-                  </button>
-                </div>
+                <QuantityField quantity={quantity} setQuantity={setQuantity} product={product} />
               </Col>
               <Col sm={8} md={6} lg={8}>
                 <Button
