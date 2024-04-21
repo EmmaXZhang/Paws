@@ -118,7 +118,7 @@ const RegisterPage = () => {
                 ></Form.Control>
               </Form.Group>
 
-              <Button type="submit" variant="primary" className="mt-2">
+              <Button type="submit" variant="dark" className="mt-2">
                 Register
               </Button>
 
@@ -127,10 +127,7 @@ const RegisterPage = () => {
 
             <Row className="py-3">
               <Col>
-                Already have an account ?{" "}
-                <Link to={redirect ? `/login?redirect=${redirect}` : `/login`}>
-                  Login
-                </Link>
+                Already have an account ? <Link to={redirect ? `/login?redirect=${redirect}` : `/login`}>Login</Link>
               </Col>
             </Row>
           </Col>

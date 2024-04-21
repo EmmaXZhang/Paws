@@ -5,9 +5,26 @@ import { Link } from "react-router-dom";
 import OrderDetail from "../../components/OrderDetail/OrderDetail";
 import backgroundImage from "/images/all-product-page.webp";
 import "./MyOrdersPage.css";
+import { Button } from "react-bootstrap";
+import { useDeleteOrderMutation } from "../../slices/ordersApiSlice";
+import { toast } from "react-toastify";
 
 const MyOrdersPage = () => {
-  const { data: orders, isLoading } = useGetMyOrdersQuery();
+  const { data: orders, isLoading, refetch } = useGetMyOrdersQuery();
+
+  const [deleteOrder, { isLoading: deletingOrder }] = useDeleteOrderMutation();
+
+  async function cancelOrderHandler(orderId) {
+    if (window.confirm("Are you sure ?")) {
+      try {
+        await deleteOrder(orderId);
+        toast.success("Order delete successfully");
+        refetch();
+      } catch (error) {
+        toast.error(error?.data?.message || error.error);
+      }
+    }
+  }
 
   return (
     <>
@@ -66,6 +83,19 @@ const MyOrdersPage = () => {
                 </Accordion.Header>
                 <Accordion.Body>
                   <OrderDetail order={order} />
+                  <div className="d-flex justify-content-between">
+                    <b></b>
+                    <Button
+                      className="mt-4"
+                      variant="outline-danger"
+                      size="sm"
+                      onClick={() => cancelOrderHandler(order._id)}
+                      disabled={order.isPaid}
+                    >
+                      Cancel Order
+                    </Button>
+                    {deletingOrder && <Loader />}
+                  </div>
                 </Accordion.Body>
               </Accordion.Item>
             ))}

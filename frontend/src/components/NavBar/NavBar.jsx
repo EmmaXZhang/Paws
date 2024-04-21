@@ -55,6 +55,9 @@ export default function NavBar() {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
             <Nav>
+              <LinkContainer to="/">
+                <Nav.Link>HOME</Nav.Link>
+              </LinkContainer>
               <LinkContainer to="/dogs">
                 <Nav.Link>DOGS</Nav.Link>
               </LinkContainer>

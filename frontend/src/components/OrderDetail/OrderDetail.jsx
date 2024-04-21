@@ -20,7 +20,6 @@ const OrderDetail = ({ order }) => {
           </Row>
         </ListGroup.Item>
       ))}
-
       <ListGroup.Item>
         <div className="d-flex justify-content-between">
           <p>SubTotal</p>

@@ -3,14 +3,7 @@
 import { Button, Form } from "react-bootstrap";
 import Loader from "../../components/Loader/Loader";
 
-const Login = ({
-  email,
-  setEmail,
-  password,
-  setPassword,
-  submitHandler,
-  isLoading,
-}) => {
+const Login = ({ email, setEmail, password, setPassword, submitHandler, isLoading }) => {
   return (
     <Form onSubmit={submitHandler}>
       <Form.Group controlId="email" className="my-3">
@@ -33,7 +26,7 @@ const Login = ({
         ></Form.Control>
       </Form.Group>
 
-      <Button type="submit" variant="primary" className="mt-2">
+      <Button type="submit" variant="dark" className="mt-2">
         Sign In
       </Button>
 

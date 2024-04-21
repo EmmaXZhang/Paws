@@ -17,6 +17,9 @@ router.get("/:id", protect, ordersCtrl.getOrderById);
 // PUT /api/orders/:id/pay
 router.put("/:id/pay", protect, ordersCtrl.updateOrderToPay);
 
+// DELETE /api/orders/:id
+router.delete("/:id", protect, ordersCtrl.deleteOrder);
+
 //Admin users---------------------------
 //GET /api/orders
 router.get("/", protect, admin, ordersCtrl.getOrders);

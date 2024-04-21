@@ -42,6 +42,12 @@ export const ordersApiSlice = apiSlice.injectEndpoints({
         method: "PUT",
       }),
     }),
+    deleteOrder: builder.mutation({
+      query: (orderId) => ({
+        url: `/api/orders/${orderId}`,
+        method: "DELETE",
+      }),
+    }),
   }),
 });
 
@@ -52,4 +58,5 @@ export const {
   useGetOrdersQuery,
   usePayOrderMutation,
   useDeliverOrderMutation,
+  useDeleteOrderMutation,
 } = ordersApiSlice;

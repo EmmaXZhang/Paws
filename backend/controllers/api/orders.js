@@ -109,4 +109,27 @@ async function updateOrderToDeliver(req, res) {
   }
 }
 
-module.exports = { create, getMyOrders, getOrders, getOrderById, updateOrderToPay, updateOrderToDeliver };
+// DELETE /api/orders/:id
+async function deleteOrder(req, res) {
+  try {
+    const order = await Order.findById({ _id: req.params.id });
+    if (!order) {
+      return res.status(404).json({ error: "Order not found" });
+    }
+    await Order.deleteOne({ _id: req.params.id });
+    res.status(200).json({ message: "Order delete successfully", order });
+  } catch (error) {
+    console.log("delete order", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+}
+
+module.exports = {
+  create,
+  getMyOrders,
+  getOrders,
+  getOrderById,
+  updateOrderToPay,
+  updateOrderToDeliver,
+  deleteOrder,
+};
