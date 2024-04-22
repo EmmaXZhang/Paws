@@ -12,7 +12,7 @@ const app = express();
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
-app.use(express.static(path.join(__dirname, "dist")));
+// app.use(express.static(path.join(__dirname, "dist")));
 app.use(cookieParser());
 
 app.use("/api/users", require("./routes/api/users"));
@@ -24,14 +24,14 @@ app.use("/api/orders", require("./routes/api/orders"));
 app.use("/api/images", require("./routes/api/images"));
 
 //any URL/paths which is not exist, by sending the React index.html page (homepage)
-app.get("/*", function (req, res) {
-  res.sendFile(path.join(__dirname, "dist", "index.html"));
-});
+// app.get("/*", function (req, res) {
+//   res.sendFile(path.join(__dirname, "dist", "index.html"));
+// });
 
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "/frontend/build")));
-
-  app.get("*", (req, res) => res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html")));
+  const __dirname = path.resolve();
+  app.use(express.static(path.join(__dirname, "/frontend/dist")));
+  app.get("*", (req, res) => res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html")));
 } else {
   app.get("/", (req, res) => {
     res.send("API is running....");
