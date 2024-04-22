@@ -23,11 +23,6 @@ app.use("/api/orders", require("./routes/api/orders"));
 
 app.use("/api/images", require("./routes/api/images"));
 
-//any URL/paths which is not exist, by sending the React index.html page (homepage)
-// app.get("/*", function (req, res) {
-//   res.sendFile(path.join(__dirname, "dist", "index.html"));
-// });
-
 if (process.env.NODE_ENV === "production") {
   const __dirname = path.resolve();
   app.use(express.static(path.join(__dirname, "/frontend/dist")));
