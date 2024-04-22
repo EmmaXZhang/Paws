@@ -34,7 +34,11 @@ const ProductsYouMightLike = ({ addToCartHandler }) => {
                       <Link to={`/products/${product._id}`}>{product.name}</Link>
                     </Card.Title>
                     <Card.Text style={{ fontSize: "20px" }}>${product.price}</Card.Text>
-                    <Button variant="outline-dark" onClick={() => addToCartHandler(product, 1)}>
+                    <Button
+                      variant="outline-dark"
+                      onClick={() => addToCartHandler(product, 1)}
+                      disabled={product.countInStock === 0}
+                    >
                       ADD TO CART &gt;
                     </Button>
                   </div>
