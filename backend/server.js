@@ -28,6 +28,16 @@ app.get("/*", function (req, res) {
   res.sendFile(path.join(__dirname, "dist", "index.html"));
 });
 
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "/frontend/build")));
+
+  app.get("*", (req, res) => res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html")));
+} else {
+  app.get("/", (req, res) => {
+    res.send("API is running....");
+  });
+}
+
 //server side: after deployed, use process.env.PORT otherwise using server:3001
 const port = process.env.PORT || 3001;
 
