@@ -5,8 +5,11 @@ import Loader from "../../components/Loader/Loader";
 import Message from "../../components/Message";
 import backgroundImage from "/images/all-product-page.webp";
 import "./AllProductPage.css";
+// import { useParams } from "react-router-dom";
 
 const AllProductpage = () => {
+  // const { searchTerm } = useParams();
+
   const { data: products, isLoading, error } = useGetProductsQuery();
   return (
     <>

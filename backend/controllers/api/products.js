@@ -9,6 +9,9 @@ async function index(req, res) {
 
     const filter = petCategory ? { petCategory } : {};
 
+    // const searchTerm = req.query.searchTerm ? { name: { $regex: new RegExp(req.query.searchTerm, "i") } } : {};
+    // const query = { ...filter, ...searchTerm };
+
     const products = await Product.find(filter).sort({ createdAt: -1 });
 
     res.json(products);

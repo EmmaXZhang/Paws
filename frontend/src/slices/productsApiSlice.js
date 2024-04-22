@@ -6,8 +6,9 @@ export const productsApiSlice = apiSlice.injectEndpoints({
     // GET All products
     getProducts: builder.query({
       // use redux toolkit to send get query to PRODUCTS_URL -> "/api/products"
-      query: () => ({
+      query: (searchTerm) => ({
         url: `/api/products`,
+        params: { searchTerm },
       }),
       // Store unused data for 5 second
       keepUnusedDataFor: 5,
@@ -19,7 +20,7 @@ export const productsApiSlice = apiSlice.injectEndpoints({
       // Define query function with category parameter
       query: (petCategory) => ({
         url: `/api/products`,
-        //giving query string
+        //giving query params
         params: { petCategory },
       }),
       provideTags: ["Product"],

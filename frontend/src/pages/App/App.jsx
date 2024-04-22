@@ -37,6 +37,7 @@ function App() {
             {/* go to url */}
             <Route path="/" element={<HomePage />} />
             <Route path="/products" element={<AllProductPage />} />
+
             <Route path="/products/beds" element={<BedsPage />} />
             <Route path="/products/towers" element={<TowersPage />} />
             <Route path="/dogs" element={<DogPage />} />
