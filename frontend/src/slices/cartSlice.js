@@ -32,14 +32,6 @@ const cartSlice = createSlice({
       return updateCart(state);
     },
 
-    removeFromCart: (state, action) => {
-      state.cartItems = state.cartItems.filter(
-        //payload = product._id
-        (item) => item._id !== action.payload
-      );
-      return updateCart(state);
-    },
-
     saveShippingAddress: (state, action) => {
       state.shippingAddress = action.payload;
       return updateCart(state);
@@ -47,6 +39,14 @@ const cartSlice = createSlice({
 
     savePayment: (state, action) => {
       state.payment = action.payload;
+      return updateCart(state);
+    },
+
+    removeFromCart: (state, action) => {
+      state.cartItems = state.cartItems.filter(
+        //payload = product._id
+        (item) => item._id !== action.payload
+      );
       return updateCart(state);
     },
 
