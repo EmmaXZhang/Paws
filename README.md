@@ -1,13 +1,20 @@
 # Paws E-Commerce Store
 
+To view the website, click this link:<a href="https://paws-t05n.onrender.com"> Paws Boutique Shop</a>
+
 ## Description
 
 Welcome to the Paws E-Commerce Store! This platform allows users to shop for pet-related products and enables administrators to manage products and orders.
+
+## Screenshot Images
+
+<img src="./frontend/public/images/README/homepage-SS.png" alt="Screenshot" width="150"><img src="./frontend/public/images/README/dog-SS.png" alt="Screenshot" width="150"><img src="./frontend/public/images/README/list-SS.png" alt="Screenshot" width="150"><img src="./frontend/public/images/README/form-SS.png" alt="Screenshot" width="150">
 
 ## Table of Contents
 
 - [Project Title](#project-title)
   - [Description](#description)
+  - [Screenshot Images](#screenshot-images)
   - [Table of Contents](#table-of-contents)
   - [Features](#features)
   - [Teck Stack](#tech-stack)
