@@ -44,7 +44,7 @@ export default function NavBar() {
 
   return (
     <header>
-      <Navbar expand="lg" className={classNames} collapseOnSelect>
+      <Navbar expand="md" className={classNames} collapseOnSelect>
         <Container className="justify-content-between">
           <LinkContainer to="/">
             <Navbar.Brand>

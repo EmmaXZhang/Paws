@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
