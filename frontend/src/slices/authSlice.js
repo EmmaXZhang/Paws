@@ -3,15 +3,14 @@ import { createSlice } from "@reduxjs/toolkit";
 //set user authentication to localstorage and remove it
 const initialState = {
   //check if there is userData(label name) in local storage
-  userData: localStorage.getItem("userData")
-    ? JSON.parse(localStorage.getItem("userData"))
-    : null,
+  userData: localStorage.getItem("userData") ? JSON.parse(localStorage.getItem("userData")) : null,
 };
 
 const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
+    //Updates or creat the Redux state with updated payload data
     setCredentials: (state, action) => {
       state.userData = action.payload;
       localStorage.setItem("userData", JSON.stringify(action.payload));
