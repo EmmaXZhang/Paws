@@ -50,7 +50,7 @@ export const productsApiSlice = apiSlice.injectEndpoints({
       invalidatesTags: ["Product"],
     }),
 
-    // UPDATE product
+    // DELETE product
     updateProduct: builder.mutation({
       query: (product) => ({
         // productId coming from productId passed from frontend page
